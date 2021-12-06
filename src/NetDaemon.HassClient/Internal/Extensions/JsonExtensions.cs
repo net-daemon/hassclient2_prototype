@@ -4,7 +4,6 @@ using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Dynamic;
 using System.Globalization;
 using System.Reflection;
 
@@ -15,64 +14,6 @@ internal static class JsonExtensions
     {
         PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance
     };
-
-    // private static object? ParseDataType(string? state)
-    // {
-    //     if (long.TryParse(state, NumberStyles.Number, CultureInfo.InvariantCulture, out long intValue))
-    //         return intValue;
-
-    //     if (double.TryParse(state, NumberStyles.Number, CultureInfo.InvariantCulture, out double doubleValue))
-    //         return doubleValue;
-
-    //     if (state == "unavailable")
-    //         return null;
-
-    //     return state;
-    // }
-
-    // public static dynamic ToDynamic(this JsonElement element)
-    // {
-    //     dynamic result = new ExpandoObject();
-    //     IDictionary<string, object> dictResult = result;
-
-    //     if (element.ValueKind == JsonValueKind.Object)
-    //     {
-    //         foreach (var obj in element.EnumerateObject())
-    //         {
-    //             dictResult[obj.Name] = obj.Value.ToDynamic();
-    //         }
-    //     }
-    //     else if (element.ValueKind == JsonValueKind.Array)
-    //     {
-    //         List<dynamic> dynList = new List<dynamic>();
-    //         foreach (var arr in element.EnumerateArray())
-    //         {
-    //             dynList.Add(arr.ToDynamic());
-    //         }
-
-    //         result = dynList.ToArray();
-    //     }
-    //     else
-    //     {
-    //         var val = element.ToDynamicValue();
-    //         if (val != null)
-    //             result = val;
-    //     }
-
-    //     return result;
-    // }
-
-    // public static object? ToDynamicValue(this JsonElement elem)
-    // {
-    //     return elem.ValueKind switch
-    //     {
-    //         JsonValueKind.String => ParseDataType(elem.GetString()),
-    //         JsonValueKind.False => false,
-    //         JsonValueKind.True => true,
-    //         JsonValueKind.Number => elem.TryGetInt64(out long intValue) ? intValue : elem.GetDouble(),
-    //         _ => null,
-    //     };
-    // }
 
     [return: MaybeNull]
     public static T ToObject<T>(this JsonElement element, JsonSerializerOptions? options = null)
@@ -85,7 +26,6 @@ internal static class JsonExtensions
 
         return JsonSerializer.Deserialize<T>(bufferWriter.WrittenSpan, options) ?? default!;
     }
-
     public static JsonElement? ToJsonElement<T>(this T source, JsonSerializerOptions? options = null)
     {
         if (source == null) return null;

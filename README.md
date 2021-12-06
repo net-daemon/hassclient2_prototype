@@ -7,7 +7,8 @@ Designgoals:
 - Better fit DI with better separation of conserns
 - Simplify networking to be easier to manage
 - Separate connected and non-connected logic
-- Simplify interfaces and add extension methods 
+- Simplify interfaces and add extension methods
+- Remove any dynamic
 
 Todo:
 
