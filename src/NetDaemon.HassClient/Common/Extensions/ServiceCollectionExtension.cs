@@ -1,7 +1,3 @@
-using Netdaemon.Client.Common;
-using NetDaemon.Client.Internal;
-using NetDaemon.Client.Internal.Net;
-
 namespace NetDaemon.Client.Common.Extensions;
 
 public static class ServiceCollectionExtensions

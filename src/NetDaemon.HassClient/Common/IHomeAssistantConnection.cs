@@ -1,6 +1,3 @@
-using NetDaemon.Client.Common.HomeAssistant.Model;
-using NetDaemon.Client.Internal.HomeAssistant.Commands;
-
 namespace Netdaemon.Client.Common;
 
 public interface IHomeAssistantConnection : IAsyncDisposable

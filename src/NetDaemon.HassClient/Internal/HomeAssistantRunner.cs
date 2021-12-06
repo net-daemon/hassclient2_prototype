@@ -1,5 +1,3 @@
-using Netdaemon.Client.Common;
-
 namespace NetDaemon.Client.Internal;
 
 internal class HomeAssistantRunner : IHomeAssistantRunner

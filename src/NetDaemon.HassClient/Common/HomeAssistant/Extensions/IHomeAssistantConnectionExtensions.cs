@@ -1,7 +1,3 @@
-using Netdaemon.Client.Common;
-using NetDaemon.Client.Common.HomeAssistant.Model;
-using NetDaemon.Client.Internal.HomeAssistant.Commands;
-
 namespace NetDaemon.Client.Common.HomeAssistant.Extensions;
 public static class IHomeAssistantConnectionExtensions
 {

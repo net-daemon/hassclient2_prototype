@@ -1,6 +1,4 @@
-﻿using NetDaemon.Client.Internal.Json;
-using NetDaemon.Client.Internal.Extensions;
-namespace NetDaemon.Client.Common.HomeAssistant.Model;
+﻿namespace NetDaemon.Client.Common.HomeAssistant.Model;
 
 public record HassState
 {

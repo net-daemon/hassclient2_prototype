@@ -1,7 +1,4 @@
-﻿using NetDaemon.Client.Internal.Json;
-using NetDaemon.Client.Common.HomeAssistant.Model;
-
-namespace NetDaemon.Client.Internal.HomeAssistant.Commands;
+﻿namespace NetDaemon.Client.Internal.HomeAssistant.Commands;
 public record HassMessage : HassMessageBase
 {
     [JsonPropertyName("event")]

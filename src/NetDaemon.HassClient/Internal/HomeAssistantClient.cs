@@ -1,8 +1,3 @@
-using Netdaemon.Client.Common;
-using NetDaemon.Client.Internal.Net;
-using NetDaemon.Client.Internal.HomeAssistant.Commands;
-using NetDaemon.Client.Internal.HomeAssistant.Messages;
-
 namespace NetDaemon.Client.Internal;
 
 internal class HomeAssistantClient : IHomeAssistantClient

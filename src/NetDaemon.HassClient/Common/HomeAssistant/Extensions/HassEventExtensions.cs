@@ -1,6 +1,3 @@
-using NetDaemon.Client.Common.HomeAssistant.Model;
-using NetDaemon.Client.Internal.Extensions;
-
 namespace NetDaemon.Client.Common.HomeAssistant.Extensions;
 public static class HassEventExtensions
 {

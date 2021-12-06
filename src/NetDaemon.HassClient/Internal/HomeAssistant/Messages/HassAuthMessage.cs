@@ -1,5 +1,4 @@
-﻿using NetDaemon.Client.Common.HomeAssistant.Model;
-namespace NetDaemon.Client.Internal.HomeAssistant.Messages;
+﻿namespace NetDaemon.Client.Internal.HomeAssistant.Messages;
 internal record HassAuthMessage : HassMessageBase
 {
     public HassAuthMessage() => Type = "auth";

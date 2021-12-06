@@ -1,7 +1,4 @@
-﻿using NetDaemon.Client.Common.HomeAssistant.Model;
-using NetDaemon.Client.Internal.Json;
-
-namespace NetDaemon.Client.Internal.Extensions;
+﻿namespace NetDaemon.Client.Internal.Extensions;
 internal static class JsonExtensions
 {
     private static readonly JsonSerializerOptions SnakeCaseNamingPolicySerializerOptions = new()
