@@ -31,18 +31,14 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
     {
         try
         {
-            if (_ws.State == WebSocketState.Open)
-            {
-                // Disposing an open connection, lets try close it properly before
-                // it is disposed
-                await CloseAsync().ConfigureAwait(false);
-            }
+            // Incase we are just "disposing" without disconnect first
+            // we call the close and fail silently if so
+            await SendCorrectCloseFrameToRemoteWebSocket().ConfigureAwait(false);
         }
         catch
         {
             // Ignore all error in dispose
         }
-        _internalCancelSource.Dispose();
         await _ws.DisposeAsync().ConfigureAwait(false);
     }
 
@@ -73,6 +69,12 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
         }
     }
 
+    /// <summary>
+    ///     Continusly reads the data from the pipe and serialize to object
+    ///     from the json that are read
+    /// </summary>
+    /// <param name="cancelToken">Cancellation token</param>
+    /// <typeparam name="T">The type to serialize to</typeparam>
     private async ValueTask<T> ReadMessageFromPipelineAndSerializeAsync<T>(CancellationToken cancelToken)
     {
         try
@@ -89,6 +91,17 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
         }
     }
 
+    /// <summary>
+    ///     Read one or more chunks of a message and writes the result
+    ///     to the pipeling
+    /// </summary>
+    /// <remarks>
+    ///     A websocket message can be 1 to several chunks of data.
+    ///     As data are read it is written on the pipeline for
+    ///     the json serializer in function ReadMessageFromPipelineAndSerializeAsync
+    ///     to continusly serialize. Using pipes is very efficient 
+    ///     way to reuse memory and get speedy results
+    /// </remarks>
     private async Task ReadMessageFromWebSocketAndWriteToPipelineAsync(CancellationToken cancelToken)
     {
         try
@@ -124,7 +137,7 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
         finally
         {
             // We have successfully read the whole message, 
-            // make available to reader (in finally block)
+            // make available to reader 
             // even if failure or we cannot reset the pipe
             await _pipe.Writer.CompleteAsync().ConfigureAwait(false);
         }
@@ -145,6 +158,25 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
         return _ws.SendAsync(result, WebSocketMessageType.Text, true, combinedTokenSource.Token);
     }
 
+    /// <summary>
+    ///     Closes correctly the websocket depending on websocket state
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    ///     Closing a websocket has special handling. When the client
+    ///     wants to close it it calls CloseAsync and the websocket takes
+    ///     care of the proper close handling.
+    /// </para>
+    /// <para>
+    ///     If the remote websocket wants to close the connection dotnet 
+    ///     implementation requires you to use CloseOutputAsync instead.
+    /// </para>
+    /// <para>
+    ///     We do not want to cancel operations until we get closed state
+    ///     this is why own timer cancellation token is used and we wait
+    ///     for correct state before returning and disposing any connections
+    /// </para>
+    /// </remarks>
     private async Task SendCorrectCloseFrameToRemoteWebSocket()
     {
         using var timeout = new CancellationTokenSource(DefaultTimeOut);
@@ -158,7 +190,6 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
                 // now we wait for the server response, which will close the socket
                 while (_ws.State != WebSocketState.Closed && !timeout.Token.IsCancellationRequested)
                     await Task.Delay(100).ConfigureAwait(false);
-                // _disconnectedSubject.OnNext(DisconnectReason.Remote);
             }
             else if (_ws.State == WebSocketState.Open)
             {
@@ -176,7 +207,8 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
         {
             // After the websocket is properly closed
             // we can safely cancel all actions
-            _internalCancelSource.Cancel();
+            if (!_internalCancelSource.IsCancellationRequested)
+                _internalCancelSource.Cancel();
         }
     }
 
