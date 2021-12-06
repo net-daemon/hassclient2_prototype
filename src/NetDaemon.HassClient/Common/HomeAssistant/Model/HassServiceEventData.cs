@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-namespace NetDaemon.Client.Common.HomeAssistant.Model;
+﻿namespace NetDaemon.Client.Common.HomeAssistant.Model;
 
 public record HassServiceEventData
 {

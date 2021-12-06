@@ -1,9 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace NetDaemon.Client.Internal.Json;
+﻿namespace NetDaemon.Client.Internal.Json;
 internal class HassDeviceModelConverter : JsonConverter<string>
 {
     public override string? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

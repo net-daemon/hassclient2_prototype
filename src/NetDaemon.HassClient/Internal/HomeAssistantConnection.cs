@@ -1,4 +1,3 @@
-using System.Net.WebSockets;
 using Netdaemon.Client.Common;
 using NetDaemon.Client.Internal.Net;
 using NetDaemon.Client.Internal.Extensions;

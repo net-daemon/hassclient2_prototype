@@ -1,5 +1,3 @@
-using System.Net.WebSockets;
-
 namespace NetDaemon.Client.Internal.Net;
 /// <summary>
 ///     The pipline makes a transport layer on top of WebSocketClient.

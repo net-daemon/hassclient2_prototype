@@ -1,11 +1,5 @@
 ﻿using NetDaemon.Client.Common.HomeAssistant.Model;
 using NetDaemon.Client.Internal.Json;
-using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Reflection;
 
 namespace NetDaemon.Client.Internal.Extensions;
 internal static class JsonExtensions

@@ -1,5 +1,3 @@
-using System.Net.WebSockets;
-
 namespace NetDaemon.Client.Internal.Net;
 
 internal class WebSocketClientTransportPipelineFactory : IWebSocketClientTransportPipelineFactory
