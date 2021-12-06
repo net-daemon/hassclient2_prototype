@@ -18,7 +18,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddSingleton<WebSocketClientFactory>();
         services.AddSingleton<IWebSocketClientFactory>(s => s.GetRequiredService<WebSocketClientFactory>());
-        // services.TryAddTransient<IWebSocketClientFactory, WebSocketClientFactory>();
         return services;
     }
 
@@ -26,7 +25,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddSingleton<WebSocketClientTransportPipelineFactory>();
         services.AddSingleton<IWebSocketClientTransportPipelineFactory>(s => s.GetRequiredService<WebSocketClientTransportPipelineFactory>());
-        // services.TryAddTransient<IWebSocketClientTransportPipelineFactory, WebSocketClientTransportPipelineFactory>();
         return services;
     }
 
@@ -34,7 +32,19 @@ public static class ServiceCollectionExtensions
     {
         services.AddSingleton<HomeAssistantConnectionFactory>();
         services.AddSingleton<IHomeAssistantConnectionFactory>(s => s.GetRequiredService<HomeAssistantConnectionFactory>());
-        // services.TryAddTransient<IHomeAssistantConnectionFactory, HomeAssistantConnectionFactory>();
         return services;
+    }
+
+    internal static IServiceCollection AddHttpClientAndFactory(this IServiceCollection services)
+    {
+        services.AddSingleton(s => s.GetRequiredService<IHttpClientFactory>().CreateClient());
+        services.AddHttpClient<IHomeAssistantApiManager, HomeAssistantApiManager>().ConfigurePrimaryHttpMessageHandler(ConfigureHttpMessageHandler);
+        return services;
+    }
+
+    internal static HttpMessageHandler ConfigureHttpMessageHandler(IServiceProvider provider)
+    {
+        var handler = provider.GetService<HttpMessageHandler>();
+        return handler ?? HttpHelper.CreateHttpMessageHandler();
     }
 }

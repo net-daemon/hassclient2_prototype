@@ -1,0 +1,83 @@
+
+namespace NetDaemon.Client.Internal;
+internal class HomeAssistantApiManager : IHomeAssistantApiManager
+{
+    private readonly HttpClient _httpClient;
+    private readonly string _apiUrl;
+    public HomeAssistantApiManager(
+        IOptions<HomeAssistantSettings> settings,
+        HttpClient httpClient
+    )
+    {
+        _httpClient = httpClient;
+        _apiUrl = GetApiUrl(settings.Value);
+    }
+
+    /// <summary>
+    ///     Default Json serialization options, Hass expects intended
+    /// </summary>
+    private readonly JsonSerializerOptions _defaultSerializerOptions = new()
+    {
+        WriteIndented = false,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+    };
+
+    private static string GetApiUrl(HomeAssistantSettings settings)
+    {
+        if (settings.Host == "supervisor")
+        {
+            // We are inside a home assistant add-on
+            return "http://supervisor/core/api";
+        }
+
+        var httpScheme = settings.Ssl ? "https" : "http";
+        return $"{httpScheme}://{settings.Host}:{settings.Port}/api";
+    }
+
+    /// <inheritdoc/>
+    public async Task<T?> GetApiCall<T>(string apiPath, CancellationToken cancelToken)
+    {
+        var apiUrl = $"{_apiUrl}/{apiPath}";
+
+        var result = await _httpClient.GetAsync(new Uri(apiUrl),
+            cancelToken).ConfigureAwait(false);
+
+        if (result.IsSuccessStatusCode)
+        {
+            var content = await result.Content.ReadAsStreamAsync(cancelToken).ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<T>(content, (JsonSerializerOptions?)null, cancelToken).ConfigureAwait(false);
+        }
+        return default;
+    }
+
+    public async Task<T?> PostApiCall<T>(string apiPath, CancellationToken cancelToken, object? data = null)
+    {
+        var apiUrl = $"{_apiUrl}/{apiPath}";
+        var content = "";
+
+        if (data != null)
+        {
+            content = JsonSerializer.Serialize(data, _defaultSerializerOptions);
+        }
+        using var sc = new StringContent(content, Encoding.UTF8);
+
+        if (content.Length > 0)
+        {
+            sc.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+        }
+
+        var result = await _httpClient.PostAsync(new Uri(apiUrl),
+            sc,
+            cancelToken).ConfigureAwait(false);
+
+        if (result.IsSuccessStatusCode)
+        {
+            if (result.Content.Headers.ContentLength > 0)
+            {
+                var stream = await result.Content.ReadAsStreamAsync(cancelToken).ConfigureAwait(false);
+                return await JsonSerializer.DeserializeAsync<T>(stream, (JsonSerializerOptions?)null, cancelToken).ConfigureAwait(false);
+            }
+        }
+        return default;
+    }
+}

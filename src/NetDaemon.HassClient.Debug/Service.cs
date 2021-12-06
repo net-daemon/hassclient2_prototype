@@ -23,7 +23,7 @@ internal class DebugService : BackgroundService
         _logger = logger;
 
         homeAssistantRunner.OnConnect.Subscribe(s => OnHomeAssistantClientConnected(s));
-        homeAssistantRunner.OnDisconnect.Subscribe(async (s) => await OnHomeAssistantClientDisconnected(s).ConfigureAwait(false));
+        homeAssistantRunner.OnDisconnect.Subscribe(s => OnHomeAssistantClientDisconnected(s));
 
     }
 
@@ -46,14 +46,13 @@ internal class DebugService : BackgroundService
         _logger.LogInformation("HassClient connected and processing events");
         connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
     }
-    private async Task OnHomeAssistantClientDisconnected(DisconnectReason reason)
+    private void OnHomeAssistantClientDisconnected(DisconnectReason reason)
     {
         _logger.LogInformation("HassClient disconnected cause of {reason}, connect retry in {timeout} seconds", _timeoutInSeconds, reason);
         // Here you would typically cancel and dispose any functions  
         // using the connection
         if (_connection is not null)
         {
-            await _connection.DisposeAsync().ConfigureAwait(false);
             _connection = null;
         }
     }

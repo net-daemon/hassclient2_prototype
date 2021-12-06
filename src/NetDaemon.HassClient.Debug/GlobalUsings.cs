@@ -7,3 +7,4 @@ global using NetDaemon.Client.Common;
 global using NetDaemon.Client.Common.Extensions;
 global using NetDaemon.Client.Common.HomeAssistant.Extensions;
 global using NetDaemon.Client.Common.HomeAssistant.Model;
+global using NetDaemon.Client.Common.Settings;

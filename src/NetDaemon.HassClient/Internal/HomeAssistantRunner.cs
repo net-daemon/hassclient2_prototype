@@ -32,7 +32,8 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
 
     private async Task InternalRunAsync(string host, int port, bool ssl, string token, TimeSpan timeout, CancellationToken cancelToken)
     {
-        // We create a 
+        IHomeAssistantConnection? currentConnection = null; ;
+
         var combinedToken = CancellationTokenSource.CreateLinkedTokenSource(_internalTokenSource.Token, cancelToken);
         bool isRetry = false;
         while (!combinedToken.IsCancellationRequested)
@@ -45,10 +46,10 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
             }
             try
             {
-                var connection = await _client.ConnectAsync(host, port, ssl, token, combinedToken.Token).ConfigureAwait(false);
+                currentConnection = await _client.ConnectAsync(host, port, ssl, token, combinedToken.Token).ConfigureAwait(false);
                 // Start the event processing before publish the connection
-                var eventsTask = connection.ProcessHomeAssistantEventsAsync(combinedToken.Token);
-                _onConnectSubject.OnNext(connection);
+                var eventsTask = currentConnection.ProcessHomeAssistantEventsAsync(combinedToken.Token);
+                _onConnectSubject.OnNext(currentConnection);
                 await eventsTask.ConfigureAwait(false);
             }
             catch (HomeAssistantConnectionException de)
@@ -84,6 +85,21 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
                 Logger.LogError("Error running HassClient", e);
                 _onDisconnectSubject.OnNext(DisconnectReason.Error);
                 throw;
+            }
+            finally
+            {
+                if (currentConnection is not null)
+                {
+                    // Just try to dispose the connection silently
+                    try
+                    {
+                        await currentConnection.DisposeAsync().ConfigureAwait(false);
+                    }
+                    finally
+                    {
+                        currentConnection = null;
+                    }
+                }
             }
             isRetry = true;
         }
