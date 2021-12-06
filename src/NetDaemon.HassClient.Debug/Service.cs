@@ -28,7 +28,7 @@ internal class DebugService : BackgroundService
                     _haSettings.Ssl,
                     _haSettings.Token,
                     stoppingToken).ConfigureAwait(false);
-        homeAssistantConnection.HassEvents.Subscribe(s => HandleEvent(s));
+        homeAssistantConnection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
         try
         {
             await homeAssistantConnection.ProcessHomeAssistantEventsAsync(stoppingToken).ConfigureAwait(false);

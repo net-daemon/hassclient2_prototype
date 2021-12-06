@@ -78,7 +78,7 @@ public static class IHomeAssistantConnectionExtensions
             ?? throw new InvalidCastException("Unexpected failure to cast");
         try
         {
-            var resultEvent = allHassMessages.HassMessages
+            var resultEvent = allHassMessages.OnHassMessage
                 .Where(n => n.Type == "pong")
                 .Timeout(timeout, Observable.Return(default(HassMessage?)))
                 .FirstAsync()

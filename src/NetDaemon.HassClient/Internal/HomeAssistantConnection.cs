@@ -26,8 +26,8 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
 
     #endregion
 
-    public IObservable<HassEvent> HassEvents => _hassMessageSubject.Where(n => n.Type == "event").Select(n => n.Event!);
-    public IObservable<HassMessage> HassMessages => _hassMessageSubject;
+    public IObservable<HassEvent> OnHomeAssistantEvent => _hassMessageSubject.Where(n => n.Type == "event").Select(n => n.Event!);
+    public IObservable<HassMessage> OnHassMessage => _hassMessageSubject;
 
     /// <summary>
     ///     Default constructor

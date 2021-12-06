@@ -11,7 +11,7 @@ public interface IHomeAssistantConnection : IAsyncDisposable
     /// <remark>
     ///     This requires that "ProcessHomeAssistantEvents" task is running
     /// </remark>
-    IObservable<HassEvent> HassEvents { get; }
+    IObservable<HassEvent> OnHomeAssistantEvent { get; }
 
     /// <summary>
     ///     Sends a command message to Home Assistant without handling the result
@@ -48,5 +48,5 @@ public interface IHomeAssistantHassMessages
     /// <remark>
     ///     This requires that "ProcessHomeAssistantEvents" task is running
     /// </remark>
-    IObservable<HassMessage> HassMessages { get; }
+    IObservable<HassMessage> OnHassMessage { get; }
 }
