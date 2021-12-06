@@ -5,7 +5,7 @@ using NetDaemon.Client.Internal.HomeAssistant.Messages;
 
 namespace NetDaemon.Client.Internal;
 
-public class HomeAssistantClient : IHomeAssistantClient
+internal class HomeAssistantClient : IHomeAssistantClient
 {
     private readonly ILogger<HomeAssistantClient> _logger;
     private readonly IWebSocketClientFactory _webSocketClientFactory;

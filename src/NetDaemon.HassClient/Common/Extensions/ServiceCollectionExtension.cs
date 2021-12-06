@@ -19,19 +19,25 @@ public static class ServiceCollectionExtensions
 
     internal static IServiceCollection AddWebSocketFactory(this IServiceCollection services)
     {
-        services.TryAddTransient<IWebSocketClientFactory, WebSocketClientFactory>();
+        services.AddSingleton<WebSocketClientFactory>();
+        services.AddSingleton<IWebSocketClientFactory>(s => s.GetRequiredService<WebSocketClientFactory>());
+        // services.TryAddTransient<IWebSocketClientFactory, WebSocketClientFactory>();
         return services;
     }
 
     internal static IServiceCollection AddPipelineFactory(this IServiceCollection services)
     {
-        services.TryAddTransient<IWebSocketClientTransportPipelineFactory, WebSocketClientTransportPipelineFactory>();
+        services.AddSingleton<WebSocketClientTransportPipelineFactory>();
+        services.AddSingleton<IWebSocketClientTransportPipelineFactory>(s => s.GetRequiredService<WebSocketClientTransportPipelineFactory>());
+        // services.TryAddTransient<IWebSocketClientTransportPipelineFactory, WebSocketClientTransportPipelineFactory>();
         return services;
     }
 
     internal static IServiceCollection AddConnectionFactory(this IServiceCollection services)
     {
-        services.TryAddTransient<IHomeAssistantConnectionFactory, HomeAssistantConnectionFactory>();
+        services.AddSingleton<HomeAssistantConnectionFactory>();
+        services.AddSingleton<IHomeAssistantConnectionFactory>(s => s.GetRequiredService<HomeAssistantConnectionFactory>());
+        // services.TryAddTransient<IHomeAssistantConnectionFactory, HomeAssistantConnectionFactory>();
         return services;
     }
 }

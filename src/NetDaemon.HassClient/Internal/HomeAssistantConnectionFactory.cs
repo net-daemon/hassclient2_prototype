@@ -4,7 +4,7 @@ using NetDaemon.Client.Common.Net;
 
 namespace NetDaemon.Client.Internal;
 
-public class HomeAssistantConnectionFactory : IHomeAssistantConnectionFactory
+internal class HomeAssistantConnectionFactory : IHomeAssistantConnectionFactory
 {
     private readonly ILogger<IHomeAssistantConnection> _logger;
 

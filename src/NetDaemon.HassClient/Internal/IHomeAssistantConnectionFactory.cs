@@ -1,8 +1,9 @@
+using Netdaemon.Client.Common;
 using NetDaemon.Client.Common.Net;
 
-namespace Netdaemon.Client.Common;
+namespace NetDaemon.Client.Internal;
 
-public interface IHomeAssistantConnectionFactory
+internal interface IHomeAssistantConnectionFactory
 {
     IHomeAssistantConnection New(IWebSocketClientTransportPipeline transportPipeline);
 }
