@@ -11,6 +11,8 @@ internal class DebugService : BackgroundService
     private readonly HomeAssistantSettings _haSettings;
 
     private readonly ILogger<DebugService> _logger;
+
+    private CancellationToken? _cancelToken;
     public DebugService(
         IHostApplicationLifetime hostLifetime,
         IHomeAssistantRunner homeAssistantRunner,
@@ -22,13 +24,13 @@ internal class DebugService : BackgroundService
         _homeAssistantRunner = homeAssistantRunner;
         _logger = logger;
 
-        homeAssistantRunner.OnConnect.Subscribe(s => OnHomeAssistantClientConnected(s));
+        homeAssistantRunner.OnConnect.Subscribe(async (s) => await OnHomeAssistantClientConnected(s).ConfigureAwait(false));
         homeAssistantRunner.OnDisconnect.Subscribe(s => OnHomeAssistantClientDisconnected(s));
-
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        _cancelToken = stoppingToken;
         await _homeAssistantRunner.RunAsync(
                     _haSettings.Host,
                     _haSettings.Port,
@@ -41,10 +43,12 @@ internal class DebugService : BackgroundService
         _hostLifetime.StopApplication();
     }
 
-    private void OnHomeAssistantClientConnected(IHomeAssistantConnection connection)
+    private async Task OnHomeAssistantClientConnected(IHomeAssistantConnection connection)
     {
         _logger.LogInformation("HassClient connected and processing events");
         connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
+        var state = await connection.PostApiCall<HassState>($"states/{HttpUtility.UrlEncode("light.test")}", _cancelToken ?? CancellationToken.None, new { state = "on", attributes = new { myattribute = "hello" } }).ConfigureAwait(false);
+        _logger.LogInformation("Added entity: {entity}", state);
     }
     private void OnHomeAssistantClientDisconnected(DisconnectReason reason)
     {

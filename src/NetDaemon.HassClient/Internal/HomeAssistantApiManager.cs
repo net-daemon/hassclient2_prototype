@@ -4,6 +4,7 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiUrl;
+
     public HomeAssistantApiManager(
         IOptions<HomeAssistantSettings> settings,
         HttpClient httpClient
@@ -11,6 +12,7 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
     {
         _httpClient = httpClient;
         _apiUrl = GetApiUrl(settings.Value);
+        InitializeHttpClientWithAuthorizationHeaders(settings.Value.Token);
     }
 
     /// <summary>
@@ -21,6 +23,16 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
         WriteIndented = false,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
     };
+
+    private void InitializeHttpClientWithAuthorizationHeaders(string token)
+    {
+        if (_httpClient != null)
+        {
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+        }
+    }
 
     private static string GetApiUrl(HomeAssistantSettings settings)
     {

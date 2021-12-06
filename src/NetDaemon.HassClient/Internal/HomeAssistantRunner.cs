@@ -32,7 +32,7 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
 
     private async Task InternalRunAsync(string host, int port, bool ssl, string token, TimeSpan timeout, CancellationToken cancelToken)
     {
-        IHomeAssistantConnection? currentConnection = null; ;
+        IHomeAssistantConnection? currentConnection = null;
 
         var combinedToken = CancellationTokenSource.CreateLinkedTokenSource(_internalTokenSource.Token, cancelToken);
         bool isRetry = false;

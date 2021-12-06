@@ -1,6 +1,6 @@
 namespace NetDaemon.Client.Common;
 
-public interface IHomeAssistantConnection : IAsyncDisposable
+public interface IHomeAssistantConnection : IHomeAssistantApiManager, IAsyncDisposable
 {
     /// <summary>
     ///     Allows subsription on all events

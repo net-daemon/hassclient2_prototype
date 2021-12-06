@@ -1,7 +1,7 @@
 
-namespace NetDaemon.Client.Internal;
+namespace NetDaemon.Client.Common;
 
-internal interface IHomeAssistantApiManager
+public interface IHomeAssistantApiManager
 {
     /// <summary>
     ///     Get to Home Assistant API

@@ -6,6 +6,7 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
 
     private readonly ILogger<IHomeAssistantConnection> _logger;
     private readonly IWebSocketClientTransportPipeline _transportPipeline;
+    private readonly IHomeAssistantApiManager _apiManager;
     private readonly CancellationTokenSource _internalCancelSource = new();
 
     private readonly Subject<HassMessage> _hassMessageSubject = new();
@@ -27,10 +28,12 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
     /// <param name="pipeline">The pipline to use for websocket communication</param>
     public HomeAssistantConnection(
         ILogger<IHomeAssistantConnection> logger,
-        IWebSocketClientTransportPipeline pipeline
+        IWebSocketClientTransportPipeline pipeline,
+        IHomeAssistantApiManager apiManager
     )
     {
         _transportPipeline = pipeline ?? throw new ArgumentNullException(nameof(pipeline));
+        _apiManager = apiManager;
         _logger = logger;
 
         if (_transportPipeline.WebSocketState != WebSocketState.Open)
@@ -140,4 +143,10 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
         await _transportPipeline.DisposeAsync().ConfigureAwait(false);
         _internalCancelSource.Dispose();
     }
+
+    public Task<T?> GetApiCall<T>(string apiPath, CancellationToken cancelToken)
+    => _apiManager.GetApiCall<T>(apiPath, cancelToken);
+
+    public Task<T?> PostApiCall<T>(string apiPath, CancellationToken cancelToken, object? data = null)
+    => _apiManager.PostApiCall<T>(apiPath, cancelToken, data);
 }

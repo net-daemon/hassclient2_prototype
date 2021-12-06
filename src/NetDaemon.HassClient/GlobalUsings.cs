@@ -16,6 +16,7 @@ global using System.Reactive.Subjects;
 global using System.Reactive.Linq;
 global using System.Reactive.Threading.Tasks;
 global using System.Reflection;
+global using System.Web;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;

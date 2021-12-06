@@ -8,9 +8,12 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IHomeAssistantClient>(s => s.GetRequiredService<HomeAssistantClient>());
         services.AddSingleton<HomeAssistantRunner>();
         services.AddSingleton<IHomeAssistantRunner>(s => s.GetRequiredService<HomeAssistantRunner>());
+        services.AddSingleton<HomeAssistantApiManager>();
+        services.AddSingleton<IHomeAssistantApiManager>(s => s.GetRequiredService<HomeAssistantApiManager>());
         services.AddWebSocketFactory();
         services.AddPipelineFactory();
         services.AddConnectionFactory();
+        services.AddHttpClientAndFactory();
         return services;
     }
 

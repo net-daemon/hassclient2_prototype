@@ -1,4 +1,5 @@
 global using System.Threading.Tasks;
+global using System.Web;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Hosting;
