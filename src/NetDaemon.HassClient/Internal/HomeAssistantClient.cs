@@ -39,7 +39,14 @@ internal class HomeAssistantClient : IHomeAssistantClient
 
             await HandleAutorizationSequence(token, transportPipeline, cancelToken).ConfigureAwait(false);
 
-            return _connectionFactory.New(transportPipeline);
+            var connection = _connectionFactory.New(transportPipeline);
+
+            if (!await CheckIfRunning(connection, cancelToken).ConfigureAwait(false))
+            {
+                await connection.DisposeAsync().ConfigureAwait(false);
+                throw new HomeAssistantConnectionException(DisconnectReason.NotReady);
+            }
+            return connection;
         }
         catch (OperationCanceledException)
         {
@@ -51,6 +58,19 @@ internal class HomeAssistantClient : IHomeAssistantClient
             _logger.LogDebug("Error connecting to Home Assistant", e);
             throw;
         }
+    }
+
+    private static async Task<bool> CheckIfRunning(IHomeAssistantConnection connection, CancellationToken cancelToken)
+    {
+        var connectTimeoutTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancelToken);
+        connectTimeoutTokenSource.CancelAfter(5000);
+        // Now send the auth message to Home Assistant
+        var config = await connection
+            .SendCommandAndReturnResponseAsync<SimpleCommand, HassConfig>
+                (new("get_config"), cancelToken).ConfigureAwait(false) ??
+                    throw new NullReferenceException("Unexpected null return from command");
+
+        return config.State == "RUNNING";
     }
 
     private static async Task HandleAutorizationSequence(string token, IWebSocketClientTransportPipeline transportPipeline, CancellationToken cancelToken)
@@ -77,7 +97,7 @@ internal class HomeAssistantClient : IHomeAssistantClient
                 return;
 
             case "auth_invalid":
-                throw new ApplicationException("Failed to authenticate token");
+                throw new HomeAssistantConnectionException(DisconnectReason.Unauthorized);
 
             default:
                 throw new ApplicationException($"Unexpected response ({authResultMessage.Type})");

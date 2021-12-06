@@ -2,45 +2,61 @@
 namespace NetDaemon.HassClient.Debug;
 internal class DebugService : BackgroundService
 {
+    private const int _timeoutInSeconds = 5;
+
     private readonly IHostApplicationLifetime _hostLifetime;
-    private readonly IHomeAssistantClient _homeAssistantClient;
+    private readonly IHomeAssistantRunner _homeAssistantRunner;
+    private IHomeAssistantConnection? _connection;
 
     private readonly HomeAssistantSettings _haSettings;
 
     private readonly ILogger<DebugService> _logger;
     public DebugService(
         IHostApplicationLifetime hostLifetime,
-        IHomeAssistantClient homeAssistantClient,
+        IHomeAssistantRunner homeAssistantRunner,
         IOptions<HomeAssistantSettings> settings,
         ILogger<DebugService> logger)
     {
         _haSettings = settings.Value;
         _hostLifetime = hostLifetime;
-        _homeAssistantClient = homeAssistantClient;
+        _homeAssistantRunner = homeAssistantRunner;
         _logger = logger;
+
+        homeAssistantRunner.OnConnect.Subscribe(s => OnHomeAssistantClientConnected(s));
+        homeAssistantRunner.OnDisconnect.Subscribe(async (s) => await OnHomeAssistantClientDisconnected(s).ConfigureAwait(false));
+
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var homeAssistantConnection = await _homeAssistantClient.ConnectAsync(
+        await _homeAssistantRunner.RunAsync(
                     _haSettings.Host,
                     _haSettings.Port,
                     _haSettings.Ssl,
                     _haSettings.Token,
+                    TimeSpan.FromSeconds(_timeoutInSeconds),
                     stoppingToken).ConfigureAwait(false);
-        homeAssistantConnection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
-        try
-        {
-            await homeAssistantConnection.ProcessHomeAssistantEventsAsync(stoppingToken).ConfigureAwait(false);
-        }
-        catch (TaskCanceledException)
-        {
-            // Normal operation
-            _logger.LogInformation("Service exiting due to canceled work!");
-            _hostLifetime.StopApplication();
-        }
+
+        // Stop application if this is exited
+        _hostLifetime.StopApplication();
     }
 
+    private void OnHomeAssistantClientConnected(IHomeAssistantConnection connection)
+    {
+        _logger.LogInformation("HassClient connected and processing events");
+        connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
+    }
+    private async Task OnHomeAssistantClientDisconnected(DisconnectReason reason)
+    {
+        _logger.LogInformation("HassClient disconnected cause of {reason}, connect retry in {timeout} seconds", _timeoutInSeconds, reason);
+        // Here you would typically cancel and dispose any functions  
+        // using the connection
+        if (_connection is not null)
+        {
+            await _connection.DisposeAsync().ConfigureAwait(false);
+            _connection = null;
+        }
+    }
     private void HandleEvent(HassEvent hassEvent)
     {
         _logger.LogDebug("New event ({eventType})", hassEvent.EventType);

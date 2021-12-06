@@ -85,7 +85,6 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
                 return (TResult?)result.ResultElement.Value.ToServicesResult();
             else
                 return result.ResultElement.Value.ToObject<TResult>();
-
         }
 
         return default;

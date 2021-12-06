@@ -1,4 +1,4 @@
-namespace Netdaemon.Client.Common;
+namespace NetDaemon.Client.Common;
 
 public enum DisconnectReason
 {
@@ -6,8 +6,24 @@ public enum DisconnectReason
     ///     Client disconnected
     /// </summary>
     Client,
+
     /// <summary>
     ///     Remote host disconnected
     /// </summary>
-    Remote
+    Remote,
+
+    /// <summary>
+    ///     Remote host disconnected
+    /// </summary>
+    NotReady,
+
+    /// <summary>
+    ///     Error caused by unauthorized token
+    /// </summary>
+    Unauthorized,
+
+    /// <summary>
+    ///     Error caused disconnect
+    /// </summary>
+    Error
 }

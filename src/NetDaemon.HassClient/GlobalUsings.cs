@@ -18,11 +18,12 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 global using Microsoft.Extensions.Logging;
 // HassClient usings
-global using Netdaemon.Client.Common;
+global using NetDaemon.Client.Common;
 global using NetDaemon.Client.Common.HomeAssistant.Model;
 global using NetDaemon.Client.Internal;
 global using NetDaemon.Client.Internal.Json;
 global using NetDaemon.Client.Internal.Net;
+global using NetDaemon.Client.Common.Exceptions;
 global using NetDaemon.Client.Internal.Extensions;
 global using NetDaemon.Client.Internal.HomeAssistant.Commands;
 global using NetDaemon.Client.Internal.HomeAssistant.Messages;

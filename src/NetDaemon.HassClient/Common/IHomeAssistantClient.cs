@@ -1,4 +1,4 @@
-namespace Netdaemon.Client.Common;
+namespace NetDaemon.Client.Common;
 
 public interface IHomeAssistantClient
 {
