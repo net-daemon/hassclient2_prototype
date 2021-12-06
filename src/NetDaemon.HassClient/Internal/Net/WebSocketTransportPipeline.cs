@@ -1,6 +1,5 @@
 using System.IO.Pipelines;
 using System.Net.WebSockets;
-using NetDaemon.Client.Common.Net;
 
 namespace NetDaemon.Client.Internal.Net;
 

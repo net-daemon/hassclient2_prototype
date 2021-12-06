@@ -1,7 +1,7 @@
 using System.Net.WebSockets;
 
-namespace NetDaemon.Client.Common.Net;
-public interface IWebSocketClient : IAsyncDisposable
+namespace NetDaemon.Client.Internal.Net;
+internal interface IWebSocketClient : IAsyncDisposable
 {
     WebSocketState State { get; }
     WebSocketCloseStatus? CloseStatus { get; }

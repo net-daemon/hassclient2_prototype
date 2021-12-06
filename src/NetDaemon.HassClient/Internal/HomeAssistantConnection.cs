@@ -1,11 +1,9 @@
 using System.Net.WebSockets;
 using Netdaemon.Client.Common;
-using NetDaemon.Client.Common.Net;
+using NetDaemon.Client.Internal.Net;
 using NetDaemon.Client.Internal.Extensions;
 using NetDaemon.Client.Internal.HomeAssistant.Commands;
-using NetDaemon.Client.Internal.Json;
 using NetDaemon.Client.Common.HomeAssistant.Model;
-using System.Diagnostics.CodeAnalysis;
 
 namespace NetDaemon.Client.Internal;
 

@@ -1,11 +1,11 @@
 using System.Net.WebSockets;
 
-namespace NetDaemon.Client.Common.Net;
+namespace NetDaemon.Client.Internal.Net;
 /// <summary>
 ///     The pipline makes a transport layer on top of WebSocketClient.
 ///     This pipeline handles json serialization
 /// </summary>
-public interface IWebSocketClientTransportPipeline : IAsyncDisposable
+internal interface IWebSocketClientTransportPipeline : IAsyncDisposable
 {
     /// <summary>
     ///     Gets next message from pipeline

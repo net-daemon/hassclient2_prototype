@@ -1,5 +1,5 @@
 using Netdaemon.Client.Common;
-using NetDaemon.Client.Common.Net;
+using NetDaemon.Client.Internal.Net;
 
 namespace NetDaemon.Client.Internal;
 
