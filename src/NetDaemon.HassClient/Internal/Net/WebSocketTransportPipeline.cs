@@ -40,6 +40,9 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
 
     public async ValueTask<T> GetNextMessageAsync<T>(CancellationToken cancelToken) where T : class
     {
+        if (_ws.State != WebSocketState.Open)
+            throw new ApplicationException("Cannot send data on a closed socket!");
+
         using var combinedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(
             _internalCancelSource.Token,
             cancelToken
@@ -52,12 +55,11 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
             // from the websocket so the pipeline is not getting full
             var serializeTask = ReadMessageFromPipelineAndSerializeAsync<T>(combinedTokenSource.Token);
             await ReadMessageFromWebSocketAndWriteToPipelineAsync(combinedTokenSource.Token).ConfigureAwait(false);
-            return await serializeTask.ConfigureAwait(false);
-        }
-        catch (Exception e)
-        {
-            System.Console.WriteLine(e.Message);
-            throw;
+            var result = await serializeTask.ConfigureAwait(false);
+            // File.WriteAllText("./json_result.json", JsonSerializer.Serialize<T>(result, _defaultSerializerOptions));
+            // We need to make sure the serialzie task is finished before we throw the exception
+            combinedTokenSource.Token.ThrowIfCancellationRequested();
+            return result;
         }
         finally
         {
@@ -95,7 +97,7 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
     ///     A websocket message can be 1 to several chunks of data.
     ///     As data are read it is written on the pipeline for
     ///     the json serializer in function ReadMessageFromPipelineAndSerializeAsync
-    ///     to continusly serialize. Using pipes is very efficient 
+    ///     to continusly serialize. Using pipes is very efficient
     ///     way to reuse memory and get speedy results
     /// </remarks>
     private async Task ReadMessageFromWebSocketAndWriteToPipelineAsync(CancellationToken cancelToken)
@@ -140,7 +142,7 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
     }
     public Task SendMessageAsync<T>(T message, CancellationToken cancelToken) where T : class
     {
-        if (cancelToken.IsCancellationRequested || _ws.CloseStatus.HasValue)
+        if (cancelToken.IsCancellationRequested || _ws.State != WebSocketState.Open || _ws.CloseStatus.HasValue)
             throw new ApplicationException("Sending message on closed socket!");
 
         using var combinedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(
@@ -160,11 +162,11 @@ internal class WebSocketClientTransportPipeline : IWebSocketClientTransportPipel
     /// <remarks>
     /// <para>
     ///     Closing a websocket has special handling. When the client
-    ///     wants to close it it calls CloseAsync and the websocket takes
+    ///     wants to close it calls CloseAsync and the websocket takes
     ///     care of the proper close handling.
     /// </para>
     /// <para>
-    ///     If the remote websocket wants to close the connection dotnet 
+    ///     If the remote websocket wants to close the connection dotnet
     ///     implementation requires you to use CloseOutputAsync instead.
     /// </para>
     /// <para>

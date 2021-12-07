@@ -8,6 +8,7 @@ global using System.Globalization;
 global using System.Net.Http.Headers;
 global using System.Net.WebSockets;
 global using System.Net.Security;
+global using System.Runtime.CompilerServices;
 global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
@@ -32,3 +33,7 @@ global using NetDaemon.Client.Internal.Extensions;
 global using NetDaemon.Client.Internal.HomeAssistant.Commands;
 global using NetDaemon.Client.Internal.HomeAssistant.Messages;
 global using NetDaemon.Client.Common.Settings;
+
+// Make the internal visible to test project
+[assembly: InternalsVisibleTo("NetDaemon.HassClient.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

@@ -47,8 +47,10 @@ internal class DebugService : BackgroundService
     {
         _logger.LogInformation("HassClient connected and processing events");
         connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
-        var state = await connection.PostApiCall<HassState>($"states/{HttpUtility.UrlEncode("light.test")}", _cancelToken ?? CancellationToken.None, new { state = "on", attributes = new { myattribute = "hello" } }).ConfigureAwait(false);
-        _logger.LogInformation("Added entity: {entity}", state);
+        var services = await connection.GetServicesAsync(_cancelToken ?? CancellationToken.None);
+        // Example set state and create new entity
+        // var state = await connection.PostApiCall<HassState>($"states/{HttpUtility.UrlEncode("light.test")}", _cancelToken ?? CancellationToken.None, new { state = "on", attributes = new { myattribute = "hello" } }).ConfigureAwait(false);
+        //_logger.LogInformation("Added entity: {entity}", state);
     }
     private void OnHomeAssistantClientDisconnected(DisconnectReason reason)
     {

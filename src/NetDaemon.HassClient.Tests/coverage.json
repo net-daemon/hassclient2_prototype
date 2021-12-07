@@ -1,0 +1,4021 @@
+{
+  "NetDaemon.Client.dll": {
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistantApiManager.cs": {
+      "NetDaemon.Client.Internal.HomeAssistantApiManager": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantApiManager::InitializeHttpClientWithAuthorizationHeaders(System.String)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 12,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String NetDaemon.Client.Internal.HomeAssistantApiManager::GetApiUrl(NetDaemon.Client.Common.Settings.HomeAssistantSettings)": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": [
+            {
+              "Line": 39,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 19,
+              "EndOffset": 30,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 36,
+              "EndOffset": 38,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 36,
+              "EndOffset": 45,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistantApiManager::.ctor(Microsoft.Extensions.Options.IOptions`1<NetDaemon.Client.Common.Settings.HomeAssistantSettings>,System.Net.Http.HttpClient)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantApiManager/<GetApiCall>d__6`1": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantApiManager/<GetApiCall>d__6`1::MoveNext()": {
+          "Lines": {
+            "51": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 248,
+              "EndOffset": 253,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 248,
+              "EndOffset": 544,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantApiManager/<PostApiCall>d__7`1": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantApiManager/<PostApiCall>d__7`1::MoveNext()": {
+          "Lines": {
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 71,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 71,
+              "EndOffset": 103,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 177,
+              "EndOffset": 179,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 177,
+              "EndOffset": 208,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 390,
+              "EndOffset": 395,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 446,
+              "EndOffset": 451,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 446,
+              "EndOffset": 742,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 390,
+              "EndOffset": 743,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistantClient.cs": {
+      "NetDaemon.Client.Internal.HomeAssistantClient": {
+        "System.Uri NetDaemon.Client.Internal.HomeAssistantClient::GetHomeAssistantWebSocketUri(System.String,System.Int32,System.Boolean)": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 14,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistantClient::.ctor(Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Internal.HomeAssistantClient>,NetDaemon.Client.Internal.Net.IWebSocketClientFactory,NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipelineFactory,NetDaemon.Client.Internal.IHomeAssistantConnectionFactory)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantClient/<CheckIfRunning>d__7": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantClient/<CheckIfRunning>d__7::MoveNext()": {
+          "Lines": {
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 189,
+              "EndOffset": 191,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 189,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantClient/<ConnectAsync>d__6": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantClient/<ConnectAsync>d__6::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "32": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "61": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 554,
+              "EndOffset": 556,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 554,
+              "EndOffset": 683,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantClient/<HandleAutorizationSequence>d__8": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantClient/<HandleAutorizationSequence>d__8::MoveNext()": {
+          "Lines": {
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "92": 0,
+            "94": 0,
+            "97": 0,
+            "100": 0,
+            "103": 0,
+            "105": 0
+          },
+          "Branches": [
+            {
+              "Line": 83,
+              "Offset": 251,
+              "EndOffset": 253,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 251,
+              "EndOffset": 285,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 622,
+              "EndOffset": 624,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 622,
+              "EndOffset": 640,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 636,
+              "EndOffset": 642,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 636,
+              "EndOffset": 649,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistantConnection.cs": {
+      "NetDaemon.Client.Internal.HomeAssistantConnection": {
+        "System.Int32 NetDaemon.Client.Internal.HomeAssistantConnection::get_WaitForResultTimeout()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.IObservable`1<NetDaemon.Client.Common.HomeAssistant.Model.HassEvent> NetDaemon.Client.Internal.HomeAssistantConnection::get_OnHomeAssistantEvent()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.IObservable`1<NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage> NetDaemon.Client.Internal.HomeAssistantConnection::get_OnHassMessage()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.HomeAssistantConnection::SendCommandAsync(T,System.Threading.CancellationToken)": {
+          "Lines": {
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.HomeAssistantConnection::CloseAsync()": {
+          "Lines": {
+            "119": 0,
+            "120": 0,
+            "121": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<T> NetDaemon.Client.Internal.HomeAssistantConnection::GetApiCall(System.String,System.Threading.CancellationToken)": {
+          "Lines": {
+            "148": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<T> NetDaemon.Client.Internal.HomeAssistantConnection::PostApiCall(System.String,System.Threading.CancellationToken,System.Object)": {
+          "Lines": {
+            "151": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection::.ctor(Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Common.IHomeAssistantConnection>,NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipeline,NetDaemon.Client.Common.IHomeAssistantApiManager)": {
+          "Lines": {
+            "10": 0,
+            "12": 0,
+            "17": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 51,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 103,
+              "EndOffset": 105,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 103,
+              "EndOffset": 173,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<>c__DisplayClass19_0`2": {
+        "System.Boolean NetDaemon.Client.Internal.HomeAssistantConnection/<>c__DisplayClass19_0`2::<SendCommandAndReturnResponseAsync>b__0(NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage)": {
+          "Lines": {
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 73,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 16,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<DisposeAsync>d__22": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection/<DisposeAsync>d__22::MoveNext()": {
+          "Lines": {
+            "124": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "134": 0,
+            "135": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0
+          },
+          "Branches": [
+            {
+              "Line": 134,
+              "Offset": 236,
+              "EndOffset": 238,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 236,
+              "EndOffset": 255,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<HandleNewMessages>d__20": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection/<HandleNewMessages>d__20::MoveNext()": {
+          "Lines": {
+            "97": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "109": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": [
+            {
+              "Line": 100,
+              "Offset": 243,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 100,
+              "Offset": 243,
+              "EndOffset": 248,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 313,
+              "EndOffset": 315,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 313,
+              "EndOffset": 332,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<ProcessHomeAssistantEventsAsync>d__16": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection/<ProcessHomeAssistantEventsAsync>d__16::MoveNext()": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<SendCommandAndReturnResponseAsync>d__19`2": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection/<SendCommandAndReturnResponseAsync>d__19`2::MoveNext()": {
+          "Lines": {
+            "69": 0,
+            "70": 0,
+            "72": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "90": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": [
+            {
+              "Line": 79,
+              "Offset": 428,
+              "EndOffset": 430,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 428,
+              "EndOffset": 442,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 461,
+              "EndOffset": 463,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 461,
+              "EndOffset": 476,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 490,
+              "EndOffset": 492,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 490,
+              "EndOffset": 504,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 532,
+              "EndOffset": 534,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 608,
+              "EndOffset": 610,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 608,
+              "EndOffset": 614,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 532,
+              "EndOffset": 638,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 645,
+              "EndOffset": 647,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 645,
+              "EndOffset": 660,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 684,
+              "EndOffset": 686,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 722,
+              "EndOffset": 724,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 722,
+              "EndOffset": 757,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 684,
+              "EndOffset": 786,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantConnection/<SubscribeToAllHomeAssistantEvents>d__17": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnection/<SubscribeToAllHomeAssistantEvents>d__17::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistantConnectionFactory.cs": {
+      "NetDaemon.Client.Internal.HomeAssistantConnectionFactory": {
+        "NetDaemon.Client.Common.IHomeAssistantConnection NetDaemon.Client.Internal.HomeAssistantConnectionFactory::New(NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipeline)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistantConnectionFactory::.ctor(Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Common.IHomeAssistantConnection>,NetDaemon.Client.Common.IHomeAssistantApiManager)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistantRunner.cs": {
+      "NetDaemon.Client.Internal.HomeAssistantRunner": {
+        "System.IObservable`1<NetDaemon.Client.Common.IHomeAssistantConnection> NetDaemon.Client.Internal.HomeAssistantRunner::get_OnConnect()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.IObservable`1<NetDaemon.Client.Common.DisconnectReason> NetDaemon.Client.Internal.HomeAssistantRunner::get_OnDisconnect()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Common.IHomeAssistantRunner> NetDaemon.Client.Internal.HomeAssistantRunner::get_Logger()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.HomeAssistantRunner::RunAsync(System.String,System.Int32,System.Boolean,System.String,System.TimeSpan,System.Threading.CancellationToken)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistantRunner::.ctor(NetDaemon.Client.Common.IHomeAssistantClient,Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Common.IHomeAssistantRunner>)": {
+          "Lines": {
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantRunner/<DisposeAsync>d__15": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantRunner/<DisposeAsync>d__15::MoveNext()": {
+          "Lines": {
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0
+          },
+          "Branches": [
+            {
+              "Line": 111,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 44,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 60,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 60,
+              "EndOffset": 210,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.HomeAssistantRunner/<InternalRunAsync>d__14": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistantRunner/<InternalRunAsync>d__14::MoveNext()": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "45": 0,
+            "46": 0,
+            "48": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0
+          },
+          "Branches": [
+            {
+              "Line": 39,
+              "Offset": 1304,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 108,
+              "EndOffset": 113,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 108,
+              "EndOffset": 284,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 303,
+              "EndOffset": 309,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 303,
+              "EndOffset": 309,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 725,
+              "EndOffset": 729,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 732,
+              "EndOffset": 736,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 725,
+              "EndOffset": 786,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 732,
+              "EndOffset": 833,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 888,
+              "EndOffset": 890,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 888,
+              "EndOffset": 896,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 911,
+              "EndOffset": 913,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 911,
+              "EndOffset": 933,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 1059,
+              "EndOffset": 1064,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 1059,
+              "EndOffset": 1212,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 103,
+              "Offset": 1223,
+              "EndOffset": 1225,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 103,
+              "Offset": 1223,
+              "EndOffset": 1254,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 1304,
+              "EndOffset": 1309,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Net/WebSocketClientFactory.cs": {
+      "NetDaemon.Client.Internal.Net.WebSocketClientFactory": {
+        "NetDaemon.Client.Internal.Net.IWebSocketClient NetDaemon.Client.Internal.Net.WebSocketClientFactory::New()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Net/WebSocketClientImpl.cs": {
+      "NetDaemon.Client.Internal.Net.WebSocketClientImpl": {
+        "System.Net.WebSockets.WebSocketState NetDaemon.Client.Internal.Net.WebSocketClientImpl::get_State()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Net.WebSockets.WebSocketCloseStatus> NetDaemon.Client.Internal.Net.WebSocketClientImpl::get_CloseStatus()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Net.WebSocketClientImpl::ConnectAsync(System.Uri,System.Threading.CancellationToken)": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Net.WebSocketClientImpl::CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Net.WebSocketClientImpl::CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Net.WebSocketClientImpl::SendAsync(System.ArraySegment`1<System.Byte>,System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<System.Net.WebSockets.WebSocketReceiveResult> NetDaemon.Client.Internal.Net.WebSocketClientImpl::ReceiveAsync(System.ArraySegment`1<System.Byte>,System.Threading.CancellationToken)": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.ValueTask`1<System.Net.WebSockets.ValueWebSocketReceiveResult> NetDaemon.Client.Internal.Net.WebSocketClientImpl::ReceiveAsync(System.Memory`1<System.Byte>,System.Threading.CancellationToken)": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.ValueTask NetDaemon.Client.Internal.Net.WebSocketClientImpl::DisposeAsync()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientImpl::.ctor(System.String)": {
+          "Lines": {
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "54": 1,
+            "55": 1,
+            "56": 1,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 1,
+            "62": 1,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 1,
+            "67": 0,
+            "68": 1,
+            "69": 1,
+            "70": 1
+          },
+          "Branches": [
+            {
+              "Line": 54,
+              "Offset": 45,
+              "EndOffset": 47,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 54,
+              "Offset": 45,
+              "EndOffset": 78,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 58,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 8,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 16,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 34,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 52,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientImpl/<SendAsync>d__9": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientImpl/<SendAsync>d__9::MoveNext()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Net/WebSocketTransportPipeline.cs": {
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline": {
+        "System.Int32 NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline::get_DefaultTimeOut()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Net.WebSockets.WebSocketState NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline::get_WebSocketState()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline::SendMessageAsync(T,System.Threading.CancellationToken)": {
+          "Lines": {
+            "145": 2,
+            "146": 2,
+            "147": 1,
+            "149": 1,
+            "150": 0,
+            "152": 1,
+            "153": 1,
+            "154": 1,
+            "155": 1,
+            "157": 1,
+            "158": 1,
+            "160": 1,
+            "161": 1
+          },
+          "Branches": [
+            {
+              "Line": 146,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 146,
+              "Offset": 20,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 149,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 149,
+              "Offset": 40,
+              "EndOffset": 64,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 67,
+              "EndOffset": 80,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline::.ctor(NetDaemon.Client.Internal.Net.IWebSocketClient,Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipeline>)": {
+          "Lines": {
+            "7": 5,
+            "13": 5,
+            "15": 5,
+            "16": 5,
+            "17": 5,
+            "18": 5,
+            "19": 5,
+            "220": 5,
+            "221": 5,
+            "222": 5,
+            "223": 5,
+            "224": 5
+          },
+          "Branches": [
+            {
+              "Line": 17,
+              "Offset": 60,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 17,
+              "Offset": 60,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<CloseAsync>d__9": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<CloseAsync>d__9::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<DisposeAsync>d__10": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<DisposeAsync>d__10::MoveNext()": {
+          "Lines": {
+            "27": 0,
+            "29": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<GetNextMessageAsync>d__11`1": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<GetNextMessageAsync>d__11`1::MoveNext()": {
+          "Lines": {
+            "42": 3,
+            "43": 3,
+            "44": 1,
+            "46": 2,
+            "47": 2,
+            "48": 2,
+            "49": 2,
+            "51": 2,
+            "56": 2,
+            "57": 2,
+            "58": 2,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "66": 2,
+            "67": 2,
+            "68": 2,
+            "69": 2
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 40,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<ReadMessageFromPipelineAndSerializeAsync>d__12`1": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<ReadMessageFromPipelineAndSerializeAsync>d__12`1::MoveNext()": {
+          "Lines": {
+            "78": 2,
+            "80": 2,
+            "81": 2,
+            "82": 2,
+            "83": 2,
+            "84": 2,
+            "87": 2,
+            "89": 2,
+            "90": 2,
+            "91": 2
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 216,
+              "EndOffset": 218,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 216,
+              "EndOffset": 229,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 90,
+              "Offset": 441,
+              "EndOffset": 443,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 441,
+              "EndOffset": 472,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 90,
+              "Offset": 483,
+              "EndOffset": 487,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 90,
+              "Offset": 483,
+              "EndOffset": 496,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<ReadMessageFromWebSocketAndWriteToPipelineAsync>d__13": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<ReadMessageFromWebSocketAndWriteToPipelineAsync>d__13::MoveNext()": {
+          "Lines": {
+            "105": 2,
+            "107": 2,
+            "108": 4,
+            "109": 4,
+            "110": 4,
+            "111": 4,
+            "112": 4,
+            "113": 4,
+            "114": 4,
+            "115": 4,
+            "116": 4,
+            "118": 4,
+            "120": 4,
+            "121": 2,
+            "122": 2,
+            "124": 2,
+            "125": 0,
+            "126": 0,
+            "129": 0,
+            "132": 0,
+            "133": 0,
+            "134": 2,
+            "135": 2,
+            "137": 2,
+            "141": 2,
+            "142": 2,
+            "143": 2
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 766,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 4
+            },
+            {
+              "Line": 112,
+              "Offset": 289,
+              "EndOffset": 291,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 112,
+              "Offset": 289,
+              "EndOffset": 310,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 315,
+              "EndOffset": 320,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 120,
+              "Offset": 504,
+              "EndOffset": 506,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 120,
+              "Offset": 504,
+              "EndOffset": 512,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 112,
+              "Offset": 315,
+              "EndOffset": 518,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 125,
+              "Offset": 541,
+              "EndOffset": 546,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 125,
+              "Offset": 541,
+              "EndOffset": 680,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 2
+            },
+            {
+              "Line": 108,
+              "Offset": 716,
+              "EndOffset": 718,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 4
+            },
+            {
+              "Line": 108,
+              "Offset": 729,
+              "EndOffset": 731,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 4
+            },
+            {
+              "Line": 108,
+              "Offset": 716,
+              "EndOffset": 761,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 729,
+              "EndOffset": 761,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 766,
+              "EndOffset": 771,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 2
+            },
+            {
+              "Line": 142,
+              "Offset": 928,
+              "EndOffset": 930,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 928,
+              "EndOffset": 959,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<SendCorrectCloseFrameToRemoteWebSocket>d__15": {
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipeline/<SendCorrectCloseFrameToRemoteWebSocket>d__15::MoveNext()": {
+          "Lines": {
+            "183": 0,
+            "184": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "191": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "202": 0,
+            "203": 0,
+            "204": 0,
+            "205": 0,
+            "207": 0,
+            "209": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0
+          },
+          "Branches": [
+            {
+              "Line": 188,
+              "Offset": 99,
+              "EndOffset": 104,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 193,
+              "Offset": 403,
+              "EndOffset": 244,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 193,
+              "Offset": 371,
+              "EndOffset": 373,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 193,
+              "Offset": 371,
+              "EndOffset": 398,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 193,
+              "Offset": 403,
+              "EndOffset": 408,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 188,
+              "Offset": 99,
+              "EndOffset": 414,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 196,
+              "Offset": 437,
+              "EndOffset": 442,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 200,
+              "Offset": 609,
+              "EndOffset": 611,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 200,
+              "Offset": 609,
+              "EndOffset": 622,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 196,
+              "Offset": 437,
+              "EndOffset": 623,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 212,
+              "Offset": 661,
+              "EndOffset": 663,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 212,
+              "Offset": 661,
+              "EndOffset": 680,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Net/WebSocketTransportPipelineFactory.cs": {
+      "NetDaemon.Client.Internal.Net.WebSocketClientTransportPipelineFactory": {
+        "NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipeline NetDaemon.Client.Internal.Net.WebSocketClientTransportPipelineFactory::New(NetDaemon.Client.Internal.Net.IWebSocketClient)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 15,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.Net.WebSocketClientTransportPipelineFactory::.ctor(Microsoft.Extensions.Logging.ILogger`1<NetDaemon.Client.Internal.Net.IWebSocketClientTransportPipeline>)": {
+          "Lines": {
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Json/HassDeviceModelConverter.cs": {
+      "NetDaemon.Client.Internal.Json.HassDeviceModelConverter": {
+        "System.String NetDaemon.Client.Internal.Json.HassDeviceModelConverter::Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 12,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 48,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.Json.HassDeviceModelConverter::Write(System.Text.Json.Utf8JsonWriter,System.String,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 1,
+              "EndOffset": 5,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 1,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Json/NullableEnumStringConverter.cs": {
+      "NetDaemon.Client.Internal.Json.NullableEnumStringConverter`1": {
+        "TEnum NetDaemon.Client.Internal.Json.NullableEnumStringConverter`1::Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 14,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 27,
+              "EndOffset": 29,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 27,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 52,
+              "EndOffset": 87,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 106,
+              "EndOffset": 108,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 106,
+              "EndOffset": 119,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.Json.NullableEnumStringConverter`1::Write(System.Text.Json.Utf8JsonWriter,TEnum,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.Json.NullableEnumStringConverter`1::.ctor()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 42,
+              "EndOffset": 56,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Json/SnakeCaseNamingPolicy.cs": {
+      "NetDaemon.Client.Internal.Json.SnakeCaseNamingPolicy": {
+        "NetDaemon.Client.Internal.Json.SnakeCaseNamingPolicy NetDaemon.Client.Internal.Json.SnakeCaseNamingPolicy::get_Instance()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Internal.Json.SnakeCaseNamingPolicy::ConvertName(System.String)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Internal.Json.SnakeCaseNamingPolicy::ToSnakeCase(System.String)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": [
+            {
+              "Line": 14,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 2,
+              "EndOffset": 12,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 10,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 10,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Helpers/HttpHelper.cs": {
+      "NetDaemon.Client.Internal.Helpers.HttpHelper": {
+        "System.Net.Http.HttpClient NetDaemon.Client.Internal.Helpers.HttpHelper::CreateHttpClient()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Net.Http.HttpMessageHandler NetDaemon.Client.Internal.Helpers.HttpHelper::CreateHttpMessageHandler()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": [
+            {
+              "Line": 10,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 20,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Net.Http.HttpMessageHandler NetDaemon.Client.Internal.Helpers.HttpHelper::CreateHttpMessageHandler(System.String)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 8,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 16,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Extensions/CancellationExtensions.cs": {
+      "NetDaemon.Client.Internal.Extensions.CancellationTokenExtensions": {
+        "System.Threading.Tasks.Task NetDaemon.Client.Internal.Extensions.CancellationTokenExtensions::AsTask(System.Threading.CancellationToken)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<T> NetDaemon.Client.Internal.Extensions.CancellationTokenExtensions::AsTask(System.Threading.CancellationToken)": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/Extensions/JsonExtensions.cs": {
+      "NetDaemon.Client.Internal.Extensions.JsonExtensions": {
+        "T NetDaemon.Client.Internal.Extensions.JsonExtensions::ToObject(System.Text.Json.JsonElement,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 66,
+              "EndOffset": 80,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Nullable`1<System.Text.Json.JsonElement> NetDaemon.Client.Internal.Extensions.JsonExtensions::ToJsonElement(T,System.Text.Json.JsonSerializerOptions)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 12,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<NetDaemon.Client.Common.HomeAssistant.Model.HassServiceDomain> NetDaemon.Client.Internal.Extensions.JsonExtensions::ToServicesResult(System.Text.Json.JsonElement)": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "179": 0,
+            "180": 0
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 39,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 141,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 141,
+              "EndOffset": 143,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<NetDaemon.Client.Common.HomeAssistant.Model.HassService> NetDaemon.Client.Internal.Extensions.JsonExtensions::<ToServicesResult>g__getServices|3_0(System.Text.Json.JsonElement,NetDaemon.Client.Internal.Extensions.JsonExtensions/<>c__DisplayClass3_0&)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 70,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 70,
+              "EndOffset": 72,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassService NetDaemon.Client.Internal.Extensions.JsonExtensions::<ToServicesResult>g__getServiceFields|3_1(System.String,System.Text.Json.JsonElement,NetDaemon.Client.Internal.Extensions.JsonExtensions/<>c__DisplayClass3_0&)": {
+          "Lines": {
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "71": 0,
+            "72": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "80": 0,
+            "81": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0
+          },
+          "Branches": [
+            {
+              "Line": 66,
+              "Offset": 255,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 69,
+              "EndOffset": 71,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 83,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 69,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 83,
+              "EndOffset": 123,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 198,
+              "EndOffset": 153,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 97,
+              "EndOffset": 219,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 97,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 255,
+              "EndOffset": 260,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Object NetDaemon.Client.Internal.Extensions.JsonExtensions::<ToServicesResult>g__getSelector|3_2(System.String,System.Text.Json.JsonElement,NetDaemon.Client.Internal.Extensions.JsonExtensions/<>c__DisplayClass3_0&)": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": [
+            {
+              "Line": 97,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 97,
+              "Offset": 44,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 63,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 82,
+              "EndOffset": 84,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 92,
+              "EndOffset": 106,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 82,
+              "EndOffset": 109,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 114,
+              "EndOffset": 116,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 114,
+              "EndOffset": 127,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField NetDaemon.Client.Internal.Extensions.JsonExtensions::<ToServicesResult>g__getField|3_3(System.String,System.Text.Json.JsonElement,NetDaemon.Client.Internal.Extensions.JsonExtensions/<>c__DisplayClass3_0&)": {
+          "Lines": {
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "131": 0,
+            "132": 0,
+            "134": 0,
+            "135": 0,
+            "137": 0,
+            "140": 0,
+            "141": 0,
+            "143": 0,
+            "144": 0,
+            "146": 0,
+            "147": 0,
+            "150": 0,
+            "151": 0,
+            "153": 0,
+            "154": 0,
+            "156": 0,
+            "157": 0,
+            "159": 0,
+            "160": 0,
+            "162": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0
+          },
+          "Branches": [
+            {
+              "Line": 126,
+              "Offset": 418,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 74,
+              "EndOffset": 76,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 88,
+              "EndOffset": 90,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 102,
+              "EndOffset": 104,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 74,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 88,
+              "EndOffset": 148,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 102,
+              "EndOffset": 175,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 232,
+              "Path": 3,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 251,
+              "Path": 4,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 273,
+              "EndOffset": 275,
+              "Path": 0,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 273,
+              "EndOffset": 285,
+              "Path": 1,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 309,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 324,
+              "Path": 5,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 333,
+              "Path": 6,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 342,
+              "Path": 2,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 116,
+              "EndOffset": 359,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 116,
+              "EndOffset": 410,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 201,
+              "EndOffset": 410,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 418,
+              "EndOffset": 423,
+              "Path": 0,
+              "Ordinal": 17,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void NetDaemon.Client.Internal.Extensions.JsonExtensions::.cctor()": {
+          "Lines": {
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistant/Messages/HassAuthMessage.cs": {
+      "NetDaemon.Client.Internal.HomeAssistant.Messages.HassAuthMessage": {
+        "System.String NetDaemon.Client.Internal.HomeAssistant.Messages.HassAuthMessage::get_AccessToken()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistant.Messages.HassAuthMessage::.ctor()": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassMessage.cs": {
+      "NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage": {
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassEvent NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_Event()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_Id()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_Message()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Text.Json.JsonElement> NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_ResultElement()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Boolean> NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_Success()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassError NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage::get_Error()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistant/Commands/CallServiceCommand.cs": {
+      "NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand": {
+        "System.String NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand::get_Domain()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand::get_Service()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Object NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand::get_ServiceData()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassTarget NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand::get_Target()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistant.Commands.CallServiceCommand::.ctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistant/Commands/SimpleCommand.cs": {
+      "NetDaemon.Client.Internal.HomeAssistant.Commands.SimpleCommand": {
+        "System.Void NetDaemon.Client.Internal.HomeAssistant.Commands.SimpleCommand::.ctor(System.String)": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Internal/HomeAssistant/Commands/SubscribeEventCommand.cs": {
+      "NetDaemon.Client.Internal.HomeAssistant.Commands.SubscribeEventCommand": {
+        "System.String NetDaemon.Client.Internal.HomeAssistant.Commands.SubscribeEventCommand::get_EventType()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Internal.HomeAssistant.Commands.SubscribeEventCommand::.ctor()": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/Settings/Settings.cs": {
+      "NetDaemon.Client.Common.Settings.HomeAssistantSettings": {
+        "System.String NetDaemon.Client.Common.Settings.HomeAssistantSettings::get_Host()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int16 NetDaemon.Client.Common.Settings.HomeAssistantSettings::get_Port()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean NetDaemon.Client.Common.Settings.HomeAssistantSettings::get_Ssl()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.Settings.HomeAssistantSettings::get_Token()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/CommandMessage.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.CommandMessage": {
+        "System.Int32 NetDaemon.Client.Common.HomeAssistant.Model.CommandMessage::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassArea.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassArea": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassArea::get_Name()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassArea::get_Id()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassConfig.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassConfig": {
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_Components()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_ConfigDir()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_Elevation()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Single> NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_Latitude()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_LocationName()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Single> NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_Longitude()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_TimeZone()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_UnitSystem()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_Version()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_State()": {
+          "Lines": {
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.HassConfig::get_WhitelistExternalDirs()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassContext.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassContext": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassContext::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassContext::get_ParentId()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassContext::get_UserId()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassDevice.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassDevice": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_Manufacturer()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_Model()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_Id()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_AreaId()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_Name()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassDevice::get_NameByUser()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassEntity.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassEntity": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_DeviceId()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_EntityId()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_AreaId()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_Name()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_Icon()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEntity::get_Platform()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassError.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassError": {
+        "System.Object NetDaemon.Client.Common.HomeAssistant.Model.HassError::get_Code()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassError::get_Message()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassEvent.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassEvent": {
+        "System.Nullable`1<System.Text.Json.JsonElement> NetDaemon.Client.Common.HomeAssistant.Model.HassEvent::get_DataElement()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEvent::get_EventType()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassEvent::get_Origin()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> NetDaemon.Client.Common.HomeAssistant.Model.HassEvent::get_TimeFired()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassMessageBase.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassMessageBase": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassMessageBase::get_Type()": {
+          "Lines": {
+            "5": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassService.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassService": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassService::get_Service()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassService::get_Description()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField> NetDaemon.Client.Common.HomeAssistant.Model.HassService::get_Fields()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.TargetSelector NetDaemon.Client.Common.HomeAssistant.Model.HassService::get_Target()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassServiceDomain.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassServiceDomain": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassServiceDomain::get_Domain()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<NetDaemon.Client.Common.HomeAssistant.Model.HassService> NetDaemon.Client.Common.HomeAssistant.Model.HassServiceDomain::get_Services()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassServiceEventData.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassServiceEventData": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassServiceEventData::get_Domain()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassServiceEventData::get_Service()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Text.Json.JsonElement> NetDaemon.Client.Common.HomeAssistant.Model.HassServiceEventData::get_ServiceData()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Object NetDaemon.Client.Common.HomeAssistant.Model.HassServiceEventData::get_Data()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassServiceField.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField::get_Field()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField::get_Description()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Boolean> NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField::get_Required()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Object NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField::get_Example()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Object NetDaemon.Client.Common.HomeAssistant.Model.HassServiceField::get_Selector()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassState.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassState": {
+        "System.Nullable`1<System.Text.Json.JsonElement> NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_AttributesJson()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyDictionary`2<System.String,System.Object> NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_Attributes()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 15,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 33,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void modreq(System.Runtime.CompilerServices.IsExternalInit) NetDaemon.Client.Common.HomeAssistant.Model.HassState::set_Attributes(System.Collections.Generic.IReadOnlyDictionary`2<System.String,System.Object>)": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "T NetDaemon.Client.Common.HomeAssistant.Model.HassState::AttributesAs()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 14,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_EntityId()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_LastChanged()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_LastUpdated()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_State()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassContext NetDaemon.Client.Common.HomeAssistant.Model.HassState::get_Context()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassStateChangedEventData.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassStateChangedEventData": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassStateChangedEventData::get_EntityId()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassState NetDaemon.Client.Common.HomeAssistant.Model.HassStateChangedEventData::get_NewState()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassState NetDaemon.Client.Common.HomeAssistant.Model.HassStateChangedEventData::get_OldState()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/HassUnitSystem.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem::get_Length()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem::get_Mass()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem::get_Temperature()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.HassUnitSystem::get_Volume()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/Selectors.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.AreaSelector": {
+        "NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector NetDaemon.Client.Common.HomeAssistant.Model.AreaSelector::get_Device()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector NetDaemon.Client.Common.HomeAssistant.Model.AreaSelector::get_Entity()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector::get_Integration()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector::get_Manufacturer()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector::get_Model()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector::get_Entity()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector": {
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector::get_Integration()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector::get_Domain()": {
+          "Lines": {
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector::get_DeviceClass()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector": {
+        "System.Double NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector::get_Min()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.Double NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector::get_Max()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Single> NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector::get_Step()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.String NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector::get_UnitOfMeasurement()": {
+          "Lines": {
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<NetDaemon.Client.Common.HomeAssistant.Model.NumberSelectorMode> NetDaemon.Client.Common.HomeAssistant.Model.NumberSelector::get_Mode()": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.SelectSelector": {
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.SelectSelector::get_Options()": {
+          "Lines": {
+            "71": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.TargetSelector": {
+        "NetDaemon.Client.Common.HomeAssistant.Model.AreaSelector NetDaemon.Client.Common.HomeAssistant.Model.TargetSelector::get_Area()": {
+          "Lines": {
+            "76": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.DeviceSelector NetDaemon.Client.Common.HomeAssistant.Model.TargetSelector::get_Device()": {
+          "Lines": {
+            "78": 0
+          },
+          "Branches": []
+        },
+        "NetDaemon.Client.Common.HomeAssistant.Model.EntitySelector NetDaemon.Client.Common.HomeAssistant.Model.TargetSelector::get_Entity()": {
+          "Lines": {
+            "80": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Model.TextSelector": {
+        "System.Nullable`1<System.Boolean> NetDaemon.Client.Common.HomeAssistant.Model.TextSelector::get_Multiline()": {
+          "Lines": {
+            "85": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Model/Targets.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Model.HassTarget": {
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.HassTarget::get_EntityIds()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.HassTarget::get_DeviceIds()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IReadOnlyCollection`1<System.String> NetDaemon.Client.Common.HomeAssistant.Model.HassTarget::get_AreaIds()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Model.HassTarget::.ctor()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Extensions/HassEventExtensions.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.HassEventExtensions": {
+        "NetDaemon.Client.Common.HomeAssistant.Model.HassStateChangedEventData NetDaemon.Client.Common.HomeAssistant.Extensions.HassEventExtensions::ToStateChangedEvent(NetDaemon.Client.Common.HomeAssistant.Model.HassEvent)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 2,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 29,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/HomeAssistant/Extensions/IHomeAssistantConnectionExtensions.cs": {
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<>c": {
+        "System.Boolean NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<>c::<PingAsync>b__6_0(NetDaemon.Client.Internal.HomeAssistant.Commands.HassMessage)": {
+          "Lines": {
+            "78": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetAreasAsync>d__2": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetAreasAsync>d__2::MoveNext()": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetConfigAsync>d__5": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetConfigAsync>d__5::MoveNext()": {
+          "Lines": {
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 60,
+              "Offset": 150,
+              "EndOffset": 152,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 60,
+              "Offset": 150,
+              "EndOffset": 164,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetDevicesAsync>d__3": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetDevicesAsync>d__3::MoveNext()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetEntitiesAsync>d__4": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetEntitiesAsync>d__4::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetServicesAsync>d__1": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetServicesAsync>d__1::MoveNext()": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetStatesAsync>d__0": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<GetStatesAsync>d__0::MoveNext()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        }
+      },
+      "NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<PingAsync>d__6": {
+        "System.Void NetDaemon.Client.Common.HomeAssistant.Extensions.IHomeAssistantConnectionExtensions/<PingAsync>d__6::MoveNext()": {
+          "Lines": {
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "76": 0,
+            "77": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": [
+            {
+              "Line": 73,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 29,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/Extensions/ServiceCollectionExtension.cs": {
+      "NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions": {
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::AddHomeAssistantClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::AddWebSocketFactory(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::AddPipelineFactory(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::AddConnectionFactory(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::AddHttpClientAndFactory(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        },
+        "System.Net.Http.HttpMessageHandler NetDaemon.Client.Common.Extensions.ServiceCollectionExtensions::ConfigureHttpMessageHandler(System.IServiceProvider)": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 10,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 10,
+              "EndOffset": 18,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/workspaces/hassclient2_prototype/src/NetDaemon.HassClient/Common/Exceptions/HomeAssistantConnectionException.cs": {
+      "NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException": {
+        "NetDaemon.Client.Common.DisconnectReason NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException::get_Reason()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException::.ctor()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException::.ctor(System.String)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException::.ctor(NetDaemon.Client.Common.DisconnectReason)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void NetDaemon.Client.Common.Exceptions.HomeAssistantConnectionException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

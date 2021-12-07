@@ -12,7 +12,7 @@ public class HomeAssistantSettings
     /// <summary>
     ///     Home Assistant port
     /// </summary>
-    public short Port { get; set; } = 8123;
+    public int Port { get; set; } = 8123;
     /// <summary>
     ///     Connect using ssl
     /// </summary>
