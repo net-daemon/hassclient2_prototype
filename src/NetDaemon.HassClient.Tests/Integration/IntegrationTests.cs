@@ -54,7 +54,10 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
                 "domain",
                 "service",
                 null,
-                null,
+                new()
+                {
+                    EntityIds = new[] { "light.test" }
+                },
                 _tokenSource.Token)
             .ConfigureAwait(false);
     }
@@ -173,6 +176,12 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
 
     }
 
+    private record AttributeTest
+    {
+        [JsonPropertyName("battery_level")]
+        public int BatteryLevel { get; set; }
+    }
+
     [Fact]
     public async Task TestSubscribeAndGetEvent()
     {
@@ -200,6 +209,12 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
         changedEvent?.EntityId
             .Should()
             .BeEquivalentTo("binary_sensor.vardagsrum_pir");
+
+        var attr = changedEvent?.NewState?.AttributesAs<AttributeTest>();
+        attr?
+            .BatteryLevel
+            .Should()
+            .Be(100);
     }
 
     [Fact]
@@ -250,6 +265,10 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
         }
     }
 
+    /// <summary>
+    ///     Returns a connection Home Assistant instance
+    /// </summary>
+    /// <param name="haSettings">Provide custom setting</param>
     private async Task<TestContext> GetConnectedClientContext(HomeAssistantSettings? haSettings = null)
     {
         var mock = HaFixture?.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");

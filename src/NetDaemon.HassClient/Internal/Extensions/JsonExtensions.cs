@@ -1,11 +1,6 @@
 ﻿namespace NetDaemon.Client.Internal.Extensions;
 internal static class JsonExtensions
 {
-    private static readonly JsonSerializerOptions SnakeCaseNamingPolicySerializerOptions = new()
-    {
-        PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance
-    };
-
     [return: MaybeNull]
     public static T ToObject<T>(this JsonElement element, JsonSerializerOptions? options = null)
     {
