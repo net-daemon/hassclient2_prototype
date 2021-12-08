@@ -142,11 +142,14 @@ public class HassMockStartup : IHostedService
     // For testing the API we just return a entity
     private async Task ProcessRequest(HttpContext context)
     {
+        var entityName = "test.entity";
+        if (context.Request.Method == "POST")
+            entityName = "test.post";
 
         await context.Response.WriteAsJsonAsync<HassEntity>(
             new HassEntity
             {
-                EntityId = "test.entity",
+                EntityId = entityName,
                 DeviceId = "ksakksk22kssk2",
                 AreaId = "ssksks2ksk3k333kk",
                 Name = "name"
