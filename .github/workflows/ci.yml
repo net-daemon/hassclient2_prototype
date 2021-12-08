@@ -30,3 +30,10 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{github.workspace}}/codecover/lcov.info
+      - name: 📨 Publish coverage to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          files: ${{github.workspace}}/odecover/lcov.info
+          fail_ci_if_error: true # optional (default = false)
