@@ -124,6 +124,32 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     }
 
     [Fact]
+    public async Task TestGetConfigShouldReturnCorrectInformation()
+    {
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        var config = await ctx.HomeAssistantConnction
+            .GetConfigAsync(_tokenSource.Token)
+            .ConfigureAwait(false);
+
+        config
+            .Should()
+            .NotBeNull();
+        config?.Latitude
+            .Should()
+            .Be(63.1394549f);
+    }
+
+    [Fact]
+    public async Task TestPing()
+    {
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        var config = await ctx.HomeAssistantConnction
+            .PingAsync(TimeSpan.FromMilliseconds(TestSettings.DefaultTimeout), _tokenSource.Token)
+            .ConfigureAwait(false);
+
+    }
+
+    [Fact]
     public async Task TestGetAreasShouldHaveCorrectCounts()
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
@@ -168,6 +194,12 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             .EventType
             .Should()
                 .BeEquivalentTo("state_changed");
+
+        // We test the state changed 
+        var changedEvent = haEvent?.ToStateChangedEvent();
+        changedEvent?.EntityId
+            .Should()
+            .BeEquivalentTo("binary_sensor.vardagsrum_pir");
     }
 
     [Fact]
