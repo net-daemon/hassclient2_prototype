@@ -67,6 +67,16 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
 
     public async Task<TResult?> SendCommandAndReturnResponseAsync<T, TResult>(T command, CancellationToken cancelToken) where T : CommandMessage
     {
+        var result = await SendCommandAndReturnResponseRawAsync(command, cancelToken).ConfigureAwait(false);
+
+        if (result is not null)
+            return result.Value.ToObject<TResult>();
+
+        return default;
+    }
+
+    public async Task<JsonElement?> SendCommandAndReturnResponseRawAsync<T>(T command, CancellationToken cancelToken) where T : CommandMessage
+    {
         command.Id = Interlocked.Increment(ref _messageId);
 
         var resultEvent = _hassMessageSubject
@@ -82,15 +92,7 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
         if (!result?.Success ?? false)
             throw new ApplicationException($"Failed command ({command.Type}) error: {result?.Error}");
 
-        if (result?.ResultElement is not null)
-        {
-            if (command.Type == "get_services")
-                return (TResult?)result.ResultElement.Value.ToServicesResult();
-            else
-                return result.ResultElement.Value.ToObject<TResult>();
-        }
-
-        return default;
+        return result?.ResultElement;
     }
 
     private async Task HandleNewMessages()

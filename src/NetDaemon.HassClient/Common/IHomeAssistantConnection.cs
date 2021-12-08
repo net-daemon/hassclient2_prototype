@@ -28,6 +28,14 @@ public interface IHomeAssistantConnection : IHomeAssistantApiManager, IAsyncDisp
     Task<TResult?> SendCommandAndReturnResponseAsync<T, TResult>(T command, CancellationToken cancelToken) where T : CommandMessage;
 
     /// <summary>
+    ///     Sends a command message to Home Assistant without handling the result
+    /// </summary>
+    /// <param name="command">Command message to send</param>
+    /// <param name="cancelToken">token to cancel operation</param>
+    /// <typeparam name="T">Type of command</typeparam>
+    Task<JsonElement?> SendCommandAndReturnResponseRawAsync<T>(T command, CancellationToken cancelToken) where T : CommandMessage;
+
+    /// <summary>
     ///     Start processing Home Assistant events
     /// </summary>
     /// <param name="cancelToken">The token to cancel the processing of events</param>

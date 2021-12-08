@@ -16,9 +16,9 @@ public static class IHomeAssistantConnectionExtensions
     /// </summary>
     /// <param name="connection">connected Home Assistant instance</param>
     /// <param name="cancelToken">cancellation token</param>
-    public static async Task<IReadOnlyCollection<HassServiceDomain>?> GetServicesAsync(this IHomeAssistantConnection connection, CancellationToken cancelToken)
+    public static async Task<JsonElement?> GetServicesAsync(this IHomeAssistantConnection connection, CancellationToken cancelToken)
     => await connection
-            .SendCommandAndReturnResponseAsync<SimpleCommand, IReadOnlyCollection<HassServiceDomain>>
+            .SendCommandAndReturnResponseRawAsync<SimpleCommand>
                    (new("get_services"), cancelToken).ConfigureAwait(false);
 
     /// <summary>
