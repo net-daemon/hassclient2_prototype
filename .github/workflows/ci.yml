@@ -35,5 +35,5 @@ jobs:
         with:
           flags: unittests # optional
           name: codecov-umbrella # optional
-          files: ${{github.workspace}}/odecover/lcov.info
+          files: ${{github.workspace}}/codecover/lcov.info
           fail_ci_if_error: true # optional (default = false)
