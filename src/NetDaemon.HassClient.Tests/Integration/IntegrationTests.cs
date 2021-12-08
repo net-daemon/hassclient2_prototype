@@ -81,7 +81,8 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             Ssl = false,
             Token = "wrong token"
         };
-        await Assert.ThrowsAsync<HomeAssistantConnectionException>(async () => await GetConnectedClientContext(settings).ConfigureAwait(false));
+        await Assert.ThrowsAsync<HomeAssistantConnectionException>(
+            async () => await GetConnectedClientContext(settings).ConfigureAwait(false));
     }
 
     [Fact]
@@ -94,7 +95,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             Host = "127.0.0.2",
             Port = mock?.ServerPort ?? 0,
             Ssl = false,
-            Token = "toke does not matter"
+            Token = "token does not matter"
         };
         await Assert.ThrowsAsync<WebSocketException>(async () => await GetConnectedClientContext(settings).ConfigureAwait(false));
     }
@@ -121,19 +122,16 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
         services.Should().HaveCount(3);
     }
 
-    private class TestContext : IAsyncDisposable
+    private record TestContext : IAsyncDisposable
     {
+        public Mock<ILogger<HomeAssistantClient>> HomeAssistantLogger { get; init; } = new();
+        public Mock<ILogger<IWebSocketClientTransportPipeline>> TransportPipelineLogger { get; init; } = new();
+        public Mock<ILogger<IHomeAssistantConnection>> HomeAssistantConnectionLogger { get; init; } = new();
+        public IHomeAssistantConnection HomeAssistantConnction { get; init; } = new Mock<IHomeAssistantConnection>().Object;
         public async ValueTask DisposeAsync()
         {
             await HomeAssistantConnction.DisposeAsync().ConfigureAwait(false);
         }
-
-        public Mock<ILogger<HomeAssistantClient>> HomeAssistantLogger { get; init; }
-        public Mock<ILogger<IWebSocketClientTransportPipeline>> TransportPipelineLogger { get; init; }
-        public Mock<ILogger<IHomeAssistantConnection>> HomeAssistantConnectionLogger { get; init; }
-
-        public IHomeAssistantConnection HomeAssistantConnction { get; init; }
-
     }
 
     private async Task<TestContext> GetConnectedClientContext(HomeAssistantSettings? haSettings = null)
@@ -162,7 +160,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
                 loggerConnection.Object,
                 new HomeAssistantApiManager(
                     appSettingsOptions,
-                    mock.HomeAssistantHost.Services.GetRequiredService<IHttpClientFactory>()
+                    (mock?.HomeAssistantHost.Services.GetRequiredService<IHttpClientFactory>() ?? throw new NullReferenceException())
                     .CreateClient()
                 )
             )

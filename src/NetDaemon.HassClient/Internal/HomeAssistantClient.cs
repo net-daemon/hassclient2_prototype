@@ -97,6 +97,7 @@ internal class HomeAssistantClient : IHomeAssistantClient
                 return;
 
             case "auth_invalid":
+                await transportPipeline.CloseAsync().ConfigureAwait(false);
                 throw new HomeAssistantConnectionException(DisconnectReason.Unauthorized);
 
             default:
