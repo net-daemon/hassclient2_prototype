@@ -1,6 +1,8 @@
 using System.Net.Sockets;
+using System.Reactive.Linq;
 using Microsoft.Extensions.Options;
-
+using NetDaemon.HassClient.Tests.Helpers;
+using System.Reactive.Threading.Tasks;
 namespace NetDaemon.HassClient.Tests.Integration;
 
 public class HomeAssistantServiceFixture : IAsyncLifetime
@@ -120,6 +122,29 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             .ConfigureAwait(false);
 
         services.Should().HaveCount(3);
+    }
+
+    [Fact]
+    public async Task TestSubscribeAndGetEvent()
+    {
+        using CancellationTokenSource tokenSource = new(TestSettings.DefaultTimeout + 1000);
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        var subscribeTask = ctx.HomeAssistantConnction
+            .OnHomeAssistantEvent
+            .Timeout(TimeSpan.FromMilliseconds(TestSettings.DefaultTimeout), Observable.Return(default(HassEvent?)))
+            .FirstAsync()
+            .ToTask();
+
+        var processEventsTask = ctx.HomeAssistantConnction
+            .ProcessHomeAssistantEventsAsync(tokenSource.Token);
+
+        var haEvent = await subscribeTask.ConfigureAwait(false);
+
+        haEvent.Should().NotBeNull();
+        haEvent?
+            .EventType
+            .Should()
+                .BeEquivalentTo("state_changed");
     }
 
     private record TestContext : IAsyncDisposable

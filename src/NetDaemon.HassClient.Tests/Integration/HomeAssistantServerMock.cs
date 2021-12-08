@@ -1,12 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace NetDaemon.HassClient.Tests.Integration;
 /// <summary>
