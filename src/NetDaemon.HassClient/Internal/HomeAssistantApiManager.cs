@@ -53,13 +53,12 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
 
         var result = await _httpClient.GetAsync(new Uri(apiUrl),
             cancelToken).ConfigureAwait(false);
-
         if (result.IsSuccessStatusCode)
         {
             var content = await result.Content.ReadAsStreamAsync(cancelToken).ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<T>(content, (JsonSerializerOptions?)null, cancelToken).ConfigureAwait(false);
         }
-        return default;
+        throw new ApplicationException($"Call to API unsuccessful, code {result.StatusCode}: reason: {result.ReasonPhrase}");
     }
 
     public async Task<T?> PostApiCall<T>(string apiPath, CancellationToken cancelToken, object? data = null)

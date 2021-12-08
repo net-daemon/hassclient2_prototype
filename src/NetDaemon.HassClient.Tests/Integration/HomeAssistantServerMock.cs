@@ -102,6 +102,57 @@ public class HassMockStartup : IHostedService
                 await next();
             });
         });
+        app.UseRouting();
+        // app.Map("/api/devices", builder =>
+        // {
+        //     builder.Use(async (context, next) =>
+        //     {
+
+
+        //         await next();
+        //     });
+        // });
+
+        app.UseEndpoints(
+            e =>
+            {
+                e.Map("/api/devices",
+                     async c =>
+
+                     {
+                         await ProcessRequest(c).ConfigureAwait(false);
+                     }
+                );
+            });
+
+
+
+
+        // app.Map("/api", builder =>
+        // {
+        //     builder.Use(async (context, next) =>
+        //     {
+        //         await ProcessRequest(context).ConfigureAwait(false);
+        //         await next().ConfigureAwait(false);
+        //     });
+        // });
+    }
+
+
+    // For testing the API we just return a entity
+    private async Task ProcessRequest(HttpContext context)
+    {
+
+        await context.Response.WriteAsJsonAsync<HassEntity>(
+            new HassEntity
+            {
+                EntityId = "test.entity",
+                DeviceId = "ksakksk22kssk2",
+                AreaId = "ssksks2ksk3k333kk",
+                Name = "name"
+            }
+        ).ConfigureAwait(false);
+
     }
 
     /// <summary>

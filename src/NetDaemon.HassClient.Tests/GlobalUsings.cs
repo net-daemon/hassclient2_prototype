@@ -8,6 +8,7 @@ global using System.Text.Json.Serialization;
 global using System.Threading.Channels;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
+global using Microsoft.AspNetCore.Builder.Extensions;
 global using Microsoft.AspNetCore.Hosting.Server;
 global using Microsoft.AspNetCore.Hosting.Server.Features;
 
@@ -27,5 +28,4 @@ global using NetDaemon.Client.Internal.HomeAssistant.Commands;
 global using NetDaemon.Client.Internal.HomeAssistant.Messages;
 global using NetDaemon.Client.Common.Settings;
 global using NetDaemon.Client.Common.HomeAssistant.Extensions;
-
 global using NetDaemon.HassClient.Tests.Helpers;
