@@ -1,0 +1,39 @@
+#### Build and tests all pushes, also code coverage
+name: 🛠️ CI build check
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+jobs:
+  build:
+    name: 🔨 Build sources (CI)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📤 Checkout the repository
+        uses: actions/checkout@main
+      - name: 🥅 Install .Net 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x" # SDK Version
+      - name: 🛠️ Build code
+        run: dotnet build
+      - name: 👀 Test code
+        run: dotnet test -v minimal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=${{github.workspace}}/codecover/lcov.info
+
+      - name: 📨 Publish coverage report to coveralls.io
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{github.workspace}}/codecover/lcov.info
+      - name: 📨 Publish coverage to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          files: ${{github.workspace}}/codecover/lcov.info
+          fail_ci_if_error: true # optional (default = false)

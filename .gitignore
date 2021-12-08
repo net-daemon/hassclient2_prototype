@@ -1,0 +1,10 @@
+# Compiled directories
+[Bb]in/
+[Oo]bj/
+.vs
+*.user
+TestResults
+lcov.info
+.idea/
+appsettings.Development.json
+coverage.*
