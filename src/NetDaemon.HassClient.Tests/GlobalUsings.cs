@@ -1,11 +1,20 @@
 global using System;
 global using System.Net.WebSockets;
+global using System.Reactive.Linq;
+global using System.Reactive.Threading.Tasks;
 global using System.Text;
-global using FluentAssertions;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using System.Threading.Channels;
 global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Options;
+global using Microsoft.AspNetCore.Hosting.Server;
+global using Microsoft.AspNetCore.Hosting.Server.Features;
+
+global using FluentAssertions;
 global using Moq;
 global using Xunit;
+
 global using NetDaemon.Client.Common;
 global using NetDaemon.Client.Common.HomeAssistant.Model;
 global using NetDaemon.Client.Internal;
@@ -18,3 +27,5 @@ global using NetDaemon.Client.Internal.HomeAssistant.Commands;
 global using NetDaemon.Client.Internal.HomeAssistant.Messages;
 global using NetDaemon.Client.Common.Settings;
 global using NetDaemon.Client.Common.HomeAssistant.Extensions;
+
+global using NetDaemon.HassClient.Tests.Helpers;

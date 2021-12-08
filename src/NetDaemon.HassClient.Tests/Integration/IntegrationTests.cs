@@ -1,8 +1,3 @@
-using System.Net.Sockets;
-using System.Reactive.Linq;
-using Microsoft.Extensions.Options;
-using NetDaemon.HassClient.Tests.Helpers;
-using System.Reactive.Threading.Tasks;
 namespace NetDaemon.HassClient.Tests.Integration;
 
 public class HomeAssistantServiceFixture : IAsyncLifetime
@@ -23,6 +18,7 @@ public class HomeAssistantServiceFixture : IAsyncLifetime
 
 public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
 {
+    public CancellationTokenSource _tokenSource = new(TestSettings.DefaultTimeout);
     public IntegrationTests(HomeAssistantServiceFixture fixture)
     {
         HaFixture = fixture;
@@ -39,14 +35,28 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     }
 
     [Fact]
-    public async Task TestGetServicesShouldHaveCorrectCount()
+    public async Task TestGetServicesShouldReturnRawJsonElement()
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetServicesAsync(CancellationToken.None)
+            .GetServicesAsync(_tokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task TestCallServiceShouldSucceed()
+    {
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        await ctx.HomeAssistantConnction
+            .CallServiceAsync(
+                "domain",
+                "service",
+                null,
+                null,
+                _tokenSource.Token)
+            .ConfigureAwait(false);
     }
 
     [Fact]
@@ -54,7 +64,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetDevicesAsync(CancellationToken.None)
+            .GetDevicesAsync(_tokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().HaveCount(2);
@@ -65,7 +75,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var states = await ctx.HomeAssistantConnction
-            .GetStatesAsync(CancellationToken.None)
+            .GetStatesAsync(_tokenSource.Token)
             .ConfigureAwait(false);
 
         states.Should().HaveCount(19);
@@ -107,7 +117,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var entites = await ctx.HomeAssistantConnction
-            .GetEntitiesAsync(CancellationToken.None)
+            .GetEntitiesAsync(_tokenSource.Token)
             .ConfigureAwait(false);
 
         entites.Should().HaveCount(2);
@@ -118,10 +128,23 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetAreasAsync(CancellationToken.None)
+            .GetAreasAsync(_tokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().HaveCount(3);
+    }
+
+    [Fact]
+    public async Task TestErrorReturnShouldThrowExecption()
+    {
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        await Assert.ThrowsAsync<ApplicationException>(async () => await ctx.HomeAssistantConnction
+            .SendCommandAndReturnResponseAsync<SimpleCommand, object?>(
+                new SimpleCommand("fake_return_error"),
+                _tokenSource.Token
+            )
+            .ConfigureAwait(false));
+
     }
 
     [Fact]
@@ -145,6 +168,42 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             .EventType
             .Should()
                 .BeEquivalentTo("state_changed");
+    }
+
+    [Fact]
+    public async Task TestGetServiceEvent()
+    {
+        using CancellationTokenSource tokenSource = new(TestSettings.DefaultTimeout + 1000);
+        await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
+        var subscribeTask = ctx.HomeAssistantConnction
+            .OnHomeAssistantEvent
+            .Where(n => n.EventType == "call_service")
+            .Timeout(TimeSpan.FromMilliseconds(TestSettings.DefaultTimeout), Observable.Return(default(HassEvent?)))
+            .FirstAsync()
+            .ToTask();
+
+        var processEventsTask = ctx.HomeAssistantConnction
+            .ProcessHomeAssistantEventsAsync(tokenSource.Token);
+
+        await ctx.HomeAssistantConnction
+           .SendCommandAndReturnResponseAsync<SimpleCommand, object?>(
+               new SimpleCommand("fake_service_event"),
+               _tokenSource.Token
+           )
+           .ConfigureAwait(false);
+
+        var haEvent = await subscribeTask.ConfigureAwait(false);
+
+        haEvent.Should().NotBeNull();
+        haEvent?
+            .EventType
+            .Should()
+                .BeEquivalentTo("call_service");
+        // Test the convertion to service event
+        var stateChangedEvent = haEvent?.ToCallServiceEvent();
+        stateChangedEvent?.Domain
+            .Should()
+            .BeEquivalentTo("light");
     }
 
     private record TestContext : IAsyncDisposable
@@ -196,7 +255,7 @@ public class IntegrationTests : IClassFixture<HomeAssistantServiceFixture>
             settings.Port,
             settings.Ssl,
             settings.Token,
-            CancellationToken.None
+            _tokenSource.Token
         ).ConfigureAwait(false);
 
         return new TestContext

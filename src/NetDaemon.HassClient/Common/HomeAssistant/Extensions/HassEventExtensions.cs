@@ -7,4 +7,11 @@ public static class HassEventExtensions
             throw new NullReferenceException("DataElement cannot be empty");
         return JsonElement.ToObject<HassStateChangedEventData>();
     }
+
+    public static HassServiceEventData? ToCallServiceEvent(this HassEvent hassEvent)
+    {
+        var JsonElement = hassEvent?.DataElement ??
+            throw new NullReferenceException("DataElement cannot be empty");
+        return JsonElement.ToObject<HassServiceEventData>();
+    }
 }

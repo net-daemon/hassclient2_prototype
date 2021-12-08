@@ -1,8 +1,3 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-
 namespace NetDaemon.HassClient.Tests.Integration;
 /// <summary>
 ///     The Home Assistant Mock class implements a fake Home Assistant server by
@@ -213,6 +208,12 @@ public class HassMockStartup : IHostedService
                             hassMessage.Id,
                             webSocket).ConfigureAwait(false);
                         break;
+                    case "call_service":
+                        await ReplaceIdInResponseAndSendMsg(
+                            "result_msg.json",
+                            hassMessage.Id,
+                            webSocket).ConfigureAwait(false);
+                        break;
                     case "get_config":
                         await ReplaceIdInResponseAndSendMsg(
                             "result_config.json",
@@ -235,6 +236,26 @@ public class HassMockStartup : IHostedService
                     case "config/entity_registry/list":
                         await ReplaceIdInResponseAndSendMsg(
                                 "result_get_entities.json",
+                                hassMessage.Id,
+                                webSocket).ConfigureAwait(false);
+                        break;
+                    case "fake_return_error":
+                        await ReplaceIdInResponseAndSendMsg(
+                                "result_msg_error.json",
+                                hassMessage.Id,
+                                webSocket).ConfigureAwait(false);
+                        break;
+                    case "fake_service_event":
+                        // Here we fake the server sending a service
+                        // event by returning success and then 
+                        // return a service event
+                        await ReplaceIdInResponseAndSendMsg(
+                                "result_msg.json",
+                                hassMessage.Id,
+                                webSocket).ConfigureAwait(false);
+
+                        await ReplaceIdInResponseAndSendMsg(
+                                "service_event.json",
                                 hassMessage.Id,
                                 webSocket).ConfigureAwait(false);
                         break;

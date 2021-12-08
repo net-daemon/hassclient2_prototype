@@ -48,6 +48,18 @@ internal class DebugService : BackgroundService
         _logger.LogInformation("HassClient connected and processing events");
         connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
         var services = await connection.GetServicesAsync(_cancelToken ?? CancellationToken.None);
+
+        await connection.CallServiceAsync(
+            "notify",
+            "persistent_notification",
+            new
+            {
+                message = "CallServiceAsync works like a charm",
+                title = "From HassClient!"
+            },
+            cancelToken: _cancelToken
+        );
+
         // Example set state and create new entity
         // var state = await connection.PostApiCall<HassState>($"states/{HttpUtility.UrlEncode("light.test")}", _cancelToken ?? CancellationToken.None, new { state = "on", attributes = new { myattribute = "hello" } }).ConfigureAwait(false);
         //_logger.LogInformation("Added entity: {entity}", state);

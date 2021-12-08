@@ -63,6 +63,33 @@ public static class IHomeAssistantConnectionExtensions
                         throw new NullReferenceException("Unexpected null return from command");
 
     /// <summary>
+    ///     Get all configuration from Home Assistant
+    /// </summary>
+    /// <param name="connection">connected Home Assistant instance</param>
+    /// <param name="cancelToken">cancellation token</param>
+    public static async Task CallServiceAsync(
+        this IHomeAssistantConnection connection,
+        string domain,
+        string service,
+        object? serviceData = null,
+        HassTarget? Target = null,
+        CancellationToken? cancelToken = null
+    )
+    {
+        await connection
+            .SendCommandAndReturnResponseAsync<CallServiceCommand, Object?>
+                        (
+                new CallServiceCommand
+                {
+                    Domain = domain,
+                    Service = service,
+                    ServiceData = serviceData,
+                    Target = Target
+                },
+                cancelToken ?? CancellationToken.None).ConfigureAwait(false);
+    }
+
+    /// <summary>
     ///     Pings the connected Home Assistant instance and expect a pong
     /// </summary>
     /// <param name="connection">connected Home Assistant instance</param>

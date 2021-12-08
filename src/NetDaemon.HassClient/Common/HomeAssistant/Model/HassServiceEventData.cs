@@ -10,6 +10,4 @@ public record HassServiceEventData
 
     [JsonPropertyName("service_data")]
     public JsonElement? ServiceData { get; init; }
-
-    public object? Data { get; set; }
 }
