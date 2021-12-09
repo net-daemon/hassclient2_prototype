@@ -84,7 +84,6 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
             {
                 Logger.LogError("Error running HassClient", e);
                 _onDisconnectSubject.OnNext(DisconnectReason.Error);
-                throw;
             }
             finally
             {

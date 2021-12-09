@@ -8,5 +8,6 @@ public class HomeAssistantConnectionException : Exception
     public DisconnectReason Reason { get; set; }
     public HomeAssistantConnectionException(DisconnectReason _reason) : base($"Home assistant disconnected reason:{_reason}")
     {
+        Reason = _reason;
     }
 }
