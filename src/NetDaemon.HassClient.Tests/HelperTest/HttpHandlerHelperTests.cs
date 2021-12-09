@@ -16,4 +16,12 @@ public class HttpHandlerHelperTests
         var client = HttpHelper.CreateHttpMessageHandler();
         client.Should().BeOfType<HttpClientHandler>();
     }
+
+    [Fact]
+    public void TestHttpHandlerHelperCreateHttpMessageHandlerIgnoreCertErrors()
+    {
+        Environment.SetEnvironmentVariable("HASSCLIENT_BYPASS_CERT_ERR", "somehash");
+        var client = HttpHelper.CreateHttpMessageHandler();
+        client.Should().BeOfType<HttpClientHandler>();
+    }
 }
