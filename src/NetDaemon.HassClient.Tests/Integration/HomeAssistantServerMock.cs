@@ -103,44 +103,22 @@ public class HassMockStartup : IHostedService
             });
         });
         app.UseRouting();
-        // app.Map("/api/devices", builder =>
-        // {
-        //     builder.Use(async (context, next) =>
-        //     {
-
-
-        //         await next();
-        //     });
-        // });
 
         app.UseEndpoints(
             e =>
             {
                 e.Map("/api/devices",
-                     async c =>
+                    async c =>
 
-                     {
-                         await ProcessRequest(c).ConfigureAwait(false);
-                     }
+                    {
+                        await ProcessRequest(c).ConfigureAwait(false);
+                    }
                 );
             });
-
-
-
-
-        // app.Map("/api", builder =>
-        // {
-        //     builder.Use(async (context, next) =>
-        //     {
-        //         await ProcessRequest(context).ConfigureAwait(false);
-        //         await next().ConfigureAwait(false);
-        //     });
-        // });
     }
 
-
     // For testing the API we just return a entity
-    private async Task ProcessRequest(HttpContext context)
+    private static async Task ProcessRequest(HttpContext context)
     {
         var entityName = "test.entity";
         if (context.Request.Method == "POST")
@@ -155,7 +133,6 @@ public class HassMockStartup : IHostedService
                 Name = "name"
             }
         ).ConfigureAwait(false);
-
     }
 
     /// <summary>
