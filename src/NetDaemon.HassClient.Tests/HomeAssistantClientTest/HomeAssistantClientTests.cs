@@ -54,6 +54,20 @@ public class HomeAssistantClientTests
         await Assert.ThrowsAsync<HomeAssistantConnectionException>(async () => await client.ConnectAsync("host", 1, true, "token", CancellationToken.None).ConfigureAwait(false));
     }
 
+    [Fact]
+    public void TestInstanceNewConnectionOnClosedWebsocketThrowsExceptionShouldThrowException()
+    {
+        Pipeline.SetupGet(
+            n => n.WebSocketState
+        ).Returns(WebSocketState.Closed);
+        var loggerMock = new Mock<ILogger<IHomeAssistantConnection>>();
+        Assert.Throws<ApplicationException>(() =>
+          _ = new HomeAssistantConnection(
+          loggerMock.Object,
+          Pipeline.Object,
+          new Mock<IHomeAssistantApiManager>().Object));
+    }
+
     /// <summary>
     ///     Return a pre-authenticated OK HomeAssistantClient
     /// </summary>
