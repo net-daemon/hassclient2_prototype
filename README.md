@@ -1,4 +1,7 @@
+[![Coverage Status](https://coveralls.io/repos/github/net-daemon/hassclient2_prototype/badge.svg)](https://coveralls.io/github/net-daemon/hassclient2_prototype)
+
 # HassClient redesign prototype
+
 
 This is the redesign of the HassClient. 
 
