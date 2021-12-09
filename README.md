@@ -15,9 +15,9 @@ Designgoals:
 
 Todo:
 
-- [ ] Add another layer a HassClient runner that handles reconnect and expose the state change through IObservable
-- [ ] Add tests
-- [ ] Add integration tests
+- [x] Add another layer a HassClient runner that handles reconnect and expose the state change through IObservable
+- [x] Add tests
+- [x] Add integration tests
 - [ ] Move to main netdaemon project
 
 ## The public API design
