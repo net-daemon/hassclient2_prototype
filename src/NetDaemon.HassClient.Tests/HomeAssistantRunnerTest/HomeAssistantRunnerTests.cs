@@ -36,6 +36,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         connection.Should().NotBeNull();
     }
 
@@ -67,6 +68,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         reason.Should().Be(DisconnectReason.Error);
     }
 
@@ -98,6 +100,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         reason.Should().Be(DisconnectReason.NotReady);
     }
 
@@ -129,6 +132,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         reason.Should().Be(DisconnectReason.Unauthorized);
     }
 
@@ -152,6 +156,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         reason.Should().Be(DisconnectReason.Client);
     }
 
@@ -183,6 +188,7 @@ public class HomeAssistantRunnerTests
             await runnerTask.ConfigureAwait(false);
         }
         catch (OperationCanceledException) { } // ignore cancel error
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
         reason.Should().Be(DisconnectReason.Remote);
     }
 
