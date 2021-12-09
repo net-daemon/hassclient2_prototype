@@ -192,4 +192,17 @@ public class HomeAssistantRunnerTests
         reason.Should().Be(DisconnectReason.Remote);
     }
 
+    [Fact]
+    public async Task TestDisposeShouldDisconnectGracefully()
+    {
+        var runnerTask = DefaultRunner.RunAsync("host", 0, false, "token", TimeSpan.FromMilliseconds(100), CancellationToken.None);
+
+        await Task.Delay(500);
+
+        // Dispose should never throw exception here
+        await DefaultRunner.DisposeAsync().ConfigureAwait(false);
+
+        await runnerTask.ConfigureAwait(false);
+
+    }
 }
