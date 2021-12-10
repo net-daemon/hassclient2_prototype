@@ -23,7 +23,7 @@ jobs:
       - name: 🛠️ Build code
         run: dotnet build
       - name: 👀 Test code
-        run: dotnet test --logger:"console;verbosity=normal" /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=${{github.workspace}}/codecover/lcov.info
+        run: dotnet test -v minimal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=${{github.workspace}}/codecover/lcov.info
 
       - name: 📨 Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@master
