@@ -270,6 +270,18 @@ public class HassMockStartup : IHostedService
                                 hassMessage.Id,
                                 webSocket).ConfigureAwait(false);
                         break;
+                    case "fake_performance_test":
+                        var bytes = await File.ReadAllBytesAsync(
+                            Path.Combine(AppContext.BaseDirectory, "Integration", "Testdata", "pong.json"))
+                                .ConfigureAwait(false);
+                        for (var i = 0; i < WebsocketPerformanceTests.NumberOfEventsInPerformanceTest; i++)
+                        {
+                            await webSocket.SendAsync(
+                                new ArraySegment<byte>(bytes, 0, bytes.Length),
+                                WebSocketMessageType.Text,
+                                true, cancelSource.Token).ConfigureAwait(false);
+                        }
+                        break;
                     case "fake_return_error":
                         await ReplaceIdInResponseAndSendMsg(
                                 "result_msg_error.json",
