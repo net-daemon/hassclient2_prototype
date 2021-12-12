@@ -2,8 +2,9 @@ namespace NetDaemon.HassClient.Tests.Integration;
 
 public class IntegrationTestBase : IClassFixture<HomeAssistantServiceFixture>
 {
-    protected CancellationTokenSource _tokenSource = new(TestSettings.DefaultTimeout);
-    public IntegrationTestBase(HomeAssistantServiceFixture fixture)
+    protected readonly CancellationTokenSource TokenSource = new(TestSettings.DefaultTimeout);
+
+    protected IntegrationTestBase(HomeAssistantServiceFixture fixture)
     {
         HaFixture = fixture;
     }
@@ -16,21 +17,21 @@ public class IntegrationTestBase : IClassFixture<HomeAssistantServiceFixture>
     /// <param name="haSettings">Provide custom setting</param>
     internal async Task<TestContext> GetConnectedClientContext(HomeAssistantSettings? haSettings = null)
     {
-        var mock = HaFixture?.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
+        var mock = HaFixture.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
 
         var loggerClient = new Mock<ILogger<HomeAssistantClient>>();
         var loggerTransport = new Mock<ILogger<IWebSocketClientTransportPipeline>>();
         var loggerConnection = new Mock<ILogger<IHomeAssistantConnection>>();
 
-        var settings = haSettings ?? new HomeAssistantSettings()
+        var settings = haSettings ?? new HomeAssistantSettings
         {
             Host = "127.0.0.1",
-            Port = mock?.ServerPort ?? 0,
+            Port = mock.ServerPort,
             Ssl = false,
             Token = "ABCDEFGHIJKLMNOPQ"
         };
 
-        IOptions<HomeAssistantSettings> appSettingsOptions = Options.Create(settings);
+        var appSettingsOptions = Options.Create(settings);
 
         var client = new HomeAssistantClient(
             loggerClient.Object,
@@ -51,7 +52,7 @@ public class IntegrationTestBase : IClassFixture<HomeAssistantServiceFixture>
             settings.Port,
             settings.Ssl,
             settings.Token,
-            _tokenSource.Token
+            TokenSource.Token
         ).ConfigureAwait(false);
 
         return new TestContext

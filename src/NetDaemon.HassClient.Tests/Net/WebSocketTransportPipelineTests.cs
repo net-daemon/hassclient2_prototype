@@ -3,17 +3,16 @@ namespace NetDaemon.HassClient.Tests.Net;
 
 public class WebSocketTransportPipelineTests
 {
+    private Mock<ILogger<IWebSocketClientTransportPipeline>> LogMock { get; }
+    private WebSocketClientMock WsMock { get; }
+    private WebSocketClientTransportPipeline DefaultPipeline { get; }
+    
     public WebSocketTransportPipelineTests()
     {
         LogMock = new();
         WsMock = new();
         DefaultPipeline = new(WsMock.Object, LogMock.Object);
     }
-
-    private Mock<ILogger<IWebSocketClientTransportPipeline>> LogMock { get; }
-    private WebSocketClientMock WsMock { get; }
-    private WebSocketClientTransportPipeline DefaultPipeline { get; }
-
 
     [Fact]
     public async Task TestGetNextMessageAsyncGetsCorrectMessage()
@@ -25,7 +24,7 @@ public class WebSocketTransportPipelineTests
         var msg = await DefaultPipeline.GetNextMessageAsync<HassMessage>(CancellationToken.None).ConfigureAwait(false);
 
         // ASSERT
-        msg?.Type
+        msg.Type
             .Should()
             .BeEquivalentTo("auth_required");
     }
@@ -54,7 +53,7 @@ public class WebSocketTransportPipelineTests
         // ACT
         var msg = await DefaultPipeline.GetNextMessageAsync<ChunkedMessagesTestClass>(CancellationToken.None).ConfigureAwait(false);
 
-        msg?.BigChunkedMessage
+        msg.BigChunkedMessage
             .Should()
             .HaveLength(8180);
 
@@ -95,7 +94,7 @@ public class WebSocketTransportPipelineTests
     {
         // ARRANGE
         WsMock.Setup(n => n.ReceiveAsync(It.IsAny<Memory<byte>>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync((Memory<byte> buffer, CancellationToken token) =>
+                .ReturnsAsync((Memory<byte> _, CancellationToken _) =>
                 {
                     // Simulate a close from remote
                     WsMock.SetupGet(n => n.State).Returns(WebSocketState.CloseReceived);
@@ -133,7 +132,7 @@ public class WebSocketTransportPipelineTests
         {
             await DefaultPipeline.DisposeAsync().ConfigureAwait(false);
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             Assert.True(false, "DisposeAsync should not throw exception");
         }

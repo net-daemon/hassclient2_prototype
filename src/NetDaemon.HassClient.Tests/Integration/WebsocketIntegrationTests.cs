@@ -18,7 +18,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetServicesAsync(_tokenSource.Token)
+            .GetServicesAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().NotBeNull();
@@ -37,7 +37,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
                 {
                     EntityIds = new[] { "light.test" }
                 },
-                _tokenSource.Token)
+                TokenSource.Token)
             .ConfigureAwait(false);
     }
 
@@ -46,7 +46,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetDevicesAsync(_tokenSource.Token)
+            .GetDevicesAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().HaveCount(2);
@@ -57,7 +57,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var states = await ctx.HomeAssistantConnction
-            .GetStatesAsync(_tokenSource.Token)
+            .GetStatesAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         states.Should().HaveCount(19);
@@ -66,12 +66,12 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     [Fact]
     public async Task TestUnothorizedShouldThrowCorrectException()
     {
-        var mock = HaFixture?.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
+        var mock = HaFixture.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
 
         var settings = new HomeAssistantSettings
         {
             Host = "127.0.0.1",
-            Port = mock?.ServerPort ?? 0,
+            Port = mock.ServerPort,
             Ssl = false,
             Token = "wrong token"
         };
@@ -82,12 +82,12 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     [Fact]
     public async Task TestWrongHostShouldThrowCorrectException()
     {
-        var mock = HaFixture?.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
+        var mock = HaFixture.HaMock ?? throw new ApplicationException("Unexpected for the mock server to be null");
 
         var settings = new HomeAssistantSettings
         {
             Host = "127.0.0.2",
-            Port = mock?.ServerPort ?? 0,
+            Port = mock.ServerPort,
             Ssl = false,
             Token = "token does not matter"
         };
@@ -99,7 +99,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var entites = await ctx.HomeAssistantConnction
-            .GetEntitiesAsync(_tokenSource.Token)
+            .GetEntitiesAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         entites.Should().HaveCount(2);
@@ -110,13 +110,13 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var config = await ctx.HomeAssistantConnction
-            .GetConfigAsync(_tokenSource.Token)
+            .GetConfigAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         config
             .Should()
             .NotBeNull();
-        config?.Latitude
+        config.Latitude
             .Should()
             .Be(63.1394549f);
     }
@@ -125,8 +125,8 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     public async Task TestPing()
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
-        var config = await ctx.HomeAssistantConnction
-            .PingAsync(TimeSpan.FromMilliseconds(TestSettings.DefaultTimeout), _tokenSource.Token)
+        await ctx.HomeAssistantConnction
+            .PingAsync(TimeSpan.FromMilliseconds(TestSettings.DefaultTimeout), TokenSource.Token)
             .ConfigureAwait(false);
 
     }
@@ -136,7 +136,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     {
         await using var ctx = await GetConnectedClientContext().ConfigureAwait(false);
         var services = await ctx.HomeAssistantConnction
-            .GetAreasAsync(_tokenSource.Token)
+            .GetAreasAsync(TokenSource.Token)
             .ConfigureAwait(false);
 
         services.Should().HaveCount(3);
@@ -149,7 +149,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
         await Assert.ThrowsAsync<ApplicationException>(async () => await ctx.HomeAssistantConnction
             .SendCommandAndReturnResponseAsync<SimpleCommand, object?>(
                 new SimpleCommand("fake_return_error"),
-                _tokenSource.Token
+                TokenSource.Token
             )
             .ConfigureAwait(false));
 
@@ -158,7 +158,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
     private record AttributeTest
     {
         [JsonPropertyName("battery_level")]
-        public int BatteryLevel { get; set; }
+        public int BatteryLevel { get; init; }
     }
 
     [Fact]
@@ -172,7 +172,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
             .FirstAsync()
             .ToTask();
 
-        var processEventsTask = ctx.HomeAssistantConnction
+        _ = ctx.HomeAssistantConnction
             .ProcessHomeAssistantEventsAsync(tokenSource.Token);
 
         var haEvent = await subscribeTask.ConfigureAwait(false);
@@ -212,13 +212,13 @@ public class WebsocketIntegrationTests : IntegrationTestBase
             .FirstAsync()
             .ToTask();
 
-        var processEventsTask = ctx.HomeAssistantConnction
+        _ = ctx.HomeAssistantConnction
             .ProcessHomeAssistantEventsAsync(tokenSource.Token);
 
         await ctx.HomeAssistantConnction
            .SendCommandAndReturnResponseAsync<SimpleCommand, object?>(
                new SimpleCommand("fake_service_event"),
-               _tokenSource.Token
+               TokenSource.Token
            )
            .ConfigureAwait(false);
 
@@ -229,7 +229,7 @@ public class WebsocketIntegrationTests : IntegrationTestBase
             .EventType
             .Should()
                 .BeEquivalentTo("call_service");
-        // Test the convertion to service event
+        // Test the conversion to service event
         var stateChangedEvent = haEvent?.ToCallServiceEvent();
         stateChangedEvent?.Domain
             .Should()

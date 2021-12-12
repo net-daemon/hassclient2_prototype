@@ -1,8 +1,10 @@
 
+using System.Reactive.Linq;
+
 namespace NetDaemon.HassClient.Debug;
 internal class DebugService : BackgroundService
 {
-    private const int _timeoutInSeconds = 5;
+    private const int TimeoutInSeconds = 5;
 
     private readonly IHostApplicationLifetime _hostLifetime;
     private readonly IHomeAssistantRunner _homeAssistantRunner;
@@ -24,8 +26,10 @@ internal class DebugService : BackgroundService
         _homeAssistantRunner = homeAssistantRunner;
         _logger = logger;
 
-        homeAssistantRunner.OnConnect.Subscribe(async (s) => await OnHomeAssistantClientConnected(s).ConfigureAwait(false));
-        homeAssistantRunner.OnDisconnect.Subscribe(s => OnHomeAssistantClientDisconnected(s));
+        homeAssistantRunner.OnConnect
+            .Select(async s => await OnHomeAssistantClientConnected(s).ConfigureAwait(false))
+            .Subscribe();
+        homeAssistantRunner.OnDisconnect.Subscribe(OnHomeAssistantClientDisconnected);
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -36,7 +40,7 @@ internal class DebugService : BackgroundService
                     _haSettings.Port,
                     _haSettings.Ssl,
                     _haSettings.Token,
-                    TimeSpan.FromSeconds(_timeoutInSeconds),
+                    TimeSpan.FromSeconds(TimeoutInSeconds),
                     stoppingToken).ConfigureAwait(false);
 
         // Stop application if this is exited
@@ -46,8 +50,8 @@ internal class DebugService : BackgroundService
     private async Task OnHomeAssistantClientConnected(IHomeAssistantConnection connection)
     {
         _logger.LogInformation("HassClient connected and processing events");
-        connection.OnHomeAssistantEvent.Subscribe(s => HandleEvent(s));
-        var services = await connection.GetServicesAsync(_cancelToken ?? CancellationToken.None);
+        connection.OnHomeAssistantEvent.Subscribe(HandleEvent);
+        //var services = await connection.GetServicesAsync(_cancelToken ?? CancellationToken.None);
 
         await connection.CallServiceAsync(
             "notify",
@@ -66,7 +70,7 @@ internal class DebugService : BackgroundService
     }
     private void OnHomeAssistantClientDisconnected(DisconnectReason reason)
     {
-        _logger.LogInformation("HassClient disconnected cause of {reason}, connect retry in {timeout} seconds", _timeoutInSeconds, reason);
+        _logger.LogInformation("HassClient disconnected cause of {reason}, connect retry in {timeout} seconds", TimeoutInSeconds, reason);
         // Here you would typically cancel and dispose any functions  
         // using the connection
         if (_connection is not null)

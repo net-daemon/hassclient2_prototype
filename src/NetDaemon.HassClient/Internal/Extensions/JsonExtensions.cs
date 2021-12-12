@@ -1,8 +1,7 @@
 ﻿namespace NetDaemon.Client.Internal.Extensions;
 internal static class JsonExtensions
 {
-    [return: MaybeNull]
-    public static T ToObject<T>(this JsonElement element, JsonSerializerOptions? options = null)
+    public static T? ToObject<T>(this JsonElement element, JsonSerializerOptions? options = null)
     {
         var bufferWriter = new ArrayBufferWriter<byte>();
         using (var writer = new Utf8JsonWriter(bufferWriter))
@@ -10,7 +9,7 @@ internal static class JsonExtensions
             element.WriteTo(writer);
         }
 
-        return JsonSerializer.Deserialize<T>(bufferWriter.WrittenSpan, options) ?? default!;
+        return JsonSerializer.Deserialize<T?>(bufferWriter.WrittenSpan, options) ?? default!;
     }
     public static JsonElement? ToJsonElement<T>(this T source, JsonSerializerOptions? options = null)
     {

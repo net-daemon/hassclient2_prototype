@@ -5,7 +5,7 @@ namespace NetDaemon.HassClient.Tests.Integration;
 /// </summary>
 public class HomeAssistantMock : IAsyncDisposable
 {
-    public static readonly int RecieiveBufferSize = 1024 * 4;
+    public const int RecieiveBufferSize = 1024 * 4;
     public readonly IHost HomeAssistantHost;
 
     public int ServerPort { get; }
@@ -18,11 +18,8 @@ public class HomeAssistantMock : IAsyncDisposable
         var addressFeature = server.Features.Get<IServerAddressesFeature>() ?? throw new NullReferenceException();
         foreach (var address in addressFeature.Addresses)
         {
-            if (address is not null)
-            {
-                ServerPort = int.Parse(address.Split(':').Last());
-                break;
-            }
+            ServerPort = int.Parse(address.Split(':').Last());
+            break;
         }
     }
 
@@ -30,7 +27,7 @@ public class HomeAssistantMock : IAsyncDisposable
     ///     Starts a websocket server in a generic host
     /// </summary>
     /// <returns>Returns a IHostBuilder instance</returns>
-    public static IHostBuilder CreateHostBuilder() =>
+    private static IHostBuilder CreateHostBuilder() =>
         Host.CreateDefaultBuilder()
             .ConfigureServices(s =>
             {
@@ -49,7 +46,7 @@ public class HomeAssistantMock : IAsyncDisposable
     /// <summary>
     ///     Stops the fake Home Assistant server
     /// </summary>
-    public async Task Stop()
+    private async Task Stop()
     {
         await HomeAssistantHost.StopAsync().ConfigureAwait(false);
         await HomeAssistantHost.WaitForShutdownAsync().ConfigureAwait(false);
@@ -67,7 +64,7 @@ public class HomeAssistantMock : IAsyncDisposable
 /// </summary>
 public class HassMockStartup : IHostedService
 {
-    private readonly CancellationTokenSource cancelSource = new();
+    private readonly CancellationTokenSource _cancelSource = new();
 
     private static int DefaultTimeOut => 5000;
 
@@ -79,7 +76,7 @@ public class HassMockStartup : IHostedService
 
     public HassMockStartup(IConfiguration configuration) => Configuration = configuration;
 
-    public IConfiguration Configuration { get; }
+    private IConfiguration Configuration { get; }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment e)
     {
@@ -94,8 +91,8 @@ public class HassMockStartup : IHostedService
             {
                 if (context.WebSockets.IsWebSocketRequest)
                 {
-                    WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                    await ProcessWS(webSocket);
+                    var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                    await ProcessWebsocket(webSocket);
                     return;
                 }
 
@@ -105,13 +102,13 @@ public class HassMockStartup : IHostedService
         app.UseRouting();
 
         app.UseEndpoints(
-            e =>
+            builder =>
             {
-                e.Map("/api/devices",
-                    async c =>
+                builder.Map("/api/devices",
+                    async context =>
 
                     {
-                        await ProcessRequest(c).ConfigureAwait(false);
+                        await ProcessRequest(context).ConfigureAwait(false);
                     }
                 );
             });
@@ -124,7 +121,7 @@ public class HassMockStartup : IHostedService
         if (context.Request.Method == "POST")
             entityName = "test.post";
 
-        await context.Response.WriteAsJsonAsync<HassEntity>(
+        await context.Response.WriteAsJsonAsync(
             new HassEntity
             {
                 EntityId = entityName,
@@ -136,53 +133,56 @@ public class HassMockStartup : IHostedService
     }
 
     /// <summary>
-    ///     Replaces the id of the result being sent by the id of the command reveived
+    ///     Replaces the id of the result being sent by the id of the command received
     /// </summary>
     /// <param name="responseMessageFileName">Filename of the result</param>
     /// <param name="id">Id of the command</param>
     /// <param name="websocket">The websocket to send to</param>
     private async Task ReplaceIdInResponseAndSendMsg(string responseMessageFileName, int id, WebSocket websocket)
     {
-        var msg = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Integration", "Testdata", responseMessageFileName));
+        var msg = 
+            await File.ReadAllTextAsync(Path.Combine(AppContext.BaseDirectory, "Integration", "Testdata", responseMessageFileName)).ConfigureAwait(false);
         // All testdata has id=3 so easy to replace it
         msg = msg.Replace("\"id\": 3", $"\"id\": {id}");
         var bytes = Encoding.UTF8.GetBytes(msg);
 
         await websocket.SendAsync(new ArraySegment<byte>(bytes, 0, bytes.Length),
-            WebSocketMessageType.Text, true, cancelSource.Token).ConfigureAwait(false);
+            WebSocketMessageType.Text, true, _cancelSource.Token).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Process incoming websocket requests to simulate Home Assistant websocket API
     /// </summary>
-    private async Task ProcessWS(WebSocket webSocket)
+    private async Task ProcessWebsocket(WebSocket webSocket)
     {
         // Buffer is set.
-        byte[] buffer = new byte[HomeAssistantMock.RecieiveBufferSize];
+        var buffer = new byte[HomeAssistantMock.RecieiveBufferSize];
 
         try
         {
             // First send auth required to the client
-            byte[] authRequiredMessage = File.ReadAllBytes(Path.Combine(_mockTestdataPath, "auth_required.json"));
+            var authRequiredMessage = 
+                await File.ReadAllBytesAsync(Path.Combine(_mockTestdataPath, "auth_required.json")).ConfigureAwait(false);
+            
             await webSocket.SendAsync(new ArraySegment<byte>(authRequiredMessage, 0, authRequiredMessage.Length),
-                WebSocketMessageType.Text, true, cancelSource.Token).ConfigureAwait(false);
+                WebSocketMessageType.Text, true, _cancelSource.Token).ConfigureAwait(false);
 
 
             // Console.WriteLine($"SERVER: WebSocketState = {webSocket.State}, MessageType = {result.MessageType}");
             while (true)
             {
                 // Wait for incoming messages
-                WebSocketReceiveResult result =
-                    await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancelSource.Token).ConfigureAwait(false);
+                var result =
+                    await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), _cancelSource.Token).ConfigureAwait(false);
 
-                cancelSource.Token.ThrowIfCancellationRequested();
+                _cancelSource.Token.ThrowIfCancellationRequested();
 
                 if (result.CloseStatus.HasValue && webSocket.State == WebSocketState.CloseReceived)
                     break;
 
                 var hassMessage =
                    JsonSerializer.Deserialize<HassMessage>(new ReadOnlySpan<byte>(buffer, 0, result.Count))
-                   ?? throw new ApplicationException("Unexpected not able to deserialzie");
+                   ?? throw new ApplicationException("Unexpected not able to deserialize");
                 switch (hassMessage.Type)
                 {
                     // We have an auth message
@@ -196,16 +196,16 @@ public class HassMockStartup : IHostedService
                             // byte[] authOkMessage = File.ReadAllBytes (Path.Combine (this.mockTestdataPath, "auth_ok.json"));
                             await webSocket.SendAsync(
                                 new ArraySegment<byte>(_authOkMessage, 0, _authOkMessage.Length),
-                                WebSocketMessageType.Text, true, cancelSource.Token).ConfigureAwait(false);
+                                WebSocketMessageType.Text, true, _cancelSource.Token).ConfigureAwait(false);
                         }
                         else
                         {
                             // Hardcoded to be correct for test-case
-                            byte[] authNotOkMessage =
-                                File.ReadAllBytes(Path.Combine(_mockTestdataPath, "auth_notok.json"));
+                            var authNotOkMessage =
+                                await File.ReadAllBytesAsync(Path.Combine(_mockTestdataPath, "auth_notok.json")).ConfigureAwait(false);
                             await webSocket.SendAsync(
                                 new ArraySegment<byte>(authNotOkMessage, 0, authNotOkMessage.Length),
-                                WebSocketMessageType.Text, true, cancelSource.Token).ConfigureAwait(false);
+                                WebSocketMessageType.Text, true, _cancelSource.Token).ConfigureAwait(false);
                             // Hass will normally close session here but for the sake of testing the mock wont
                         }
 
@@ -336,7 +336,7 @@ public class HassMockStartup : IHostedService
             {
                 await SendCorrectCloseFrameToRemoteWebSocket(webSocket).ConfigureAwait(false);
             }
-            finally
+            catch
             {
                 // Just fail silently                
             }
@@ -362,26 +362,31 @@ public class HassMockStartup : IHostedService
     ///     for correct state before returning and disposing any connections
     /// </para>
     /// </remarks>
-    private async Task SendCorrectCloseFrameToRemoteWebSocket(WebSocket _ws)
+    private static async Task SendCorrectCloseFrameToRemoteWebSocket(WebSocket ws)
     {
         using var timeout = new CancellationTokenSource(DefaultTimeOut);
 
         try
         {
-            if (_ws.State == WebSocketState.CloseReceived)
+            switch (ws.State)
             {
-                // after this, the socket state which change to CloseSent
-                await _ws.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Closing", timeout.Token).ConfigureAwait(false);
-                // now we wait for the server response, which will close the socket
-                while (_ws.State != WebSocketState.Closed && !timeout.Token.IsCancellationRequested)
-                    await Task.Delay(100).ConfigureAwait(false);
-            }
-            else if (_ws.State == WebSocketState.Open)
-            {
-                // Do full close 
-                await _ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", timeout.Token).ConfigureAwait(false);
-                if (_ws.State != WebSocketState.Closed)
-                    throw new ApplicationException("Expected the websocket to be closed!");
+                case WebSocketState.CloseReceived:
+                {
+                    // after this, the socket state which change to CloseSent
+                    await ws.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Closing", timeout.Token).ConfigureAwait(false);
+                    // now we wait for the server response, which will close the socket
+                    while (ws.State != WebSocketState.Closed && !timeout.Token.IsCancellationRequested)
+                        await Task.Delay(100).ConfigureAwait(false);
+                    break;
+                }
+                case WebSocketState.Open:
+                {
+                    // Do full close 
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", timeout.Token).ConfigureAwait(false);
+                    if (ws.State != WebSocketState.Closed)
+                        throw new ApplicationException("Expected the websocket to be closed!");
+                    break;
+                }
             }
         }
         catch (OperationCanceledException)
@@ -397,7 +402,7 @@ public class HassMockStartup : IHostedService
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        cancelSource.Cancel();
+        _cancelSource.Cancel();
         return Task.CompletedTask;
     }
 

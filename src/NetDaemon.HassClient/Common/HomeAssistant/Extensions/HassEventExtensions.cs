@@ -3,15 +3,15 @@ public static class HassEventExtensions
 {
     public static HassStateChangedEventData? ToStateChangedEvent(this HassEvent hassEvent)
     {
-        var JsonElement = hassEvent?.DataElement ??
+        var jsonElement = hassEvent.DataElement ??
             throw new NullReferenceException("DataElement cannot be empty");
-        return JsonElement.ToObject<HassStateChangedEventData>();
+        return jsonElement.ToObject<HassStateChangedEventData>();
     }
 
     public static HassServiceEventData? ToCallServiceEvent(this HassEvent hassEvent)
     {
-        var JsonElement = hassEvent?.DataElement ??
+        var jsonElement = hassEvent.DataElement ??
             throw new NullReferenceException("DataElement cannot be empty");
-        return JsonElement.ToObject<HassServiceEventData>();
+        return jsonElement.ToObject<HassServiceEventData>();
     }
 }

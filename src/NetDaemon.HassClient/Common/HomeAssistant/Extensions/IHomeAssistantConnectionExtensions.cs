@@ -1,5 +1,5 @@
 namespace NetDaemon.Client.Common.HomeAssistant.Extensions;
-public static class IHomeAssistantConnectionExtensions
+public static class HomeAssistantConnectionExtensions
 {
     /// <summary>
     ///     Get all states from all entities from Home Assistant
@@ -42,7 +42,7 @@ public static class IHomeAssistantConnectionExtensions
                    (new("config/device_registry/list"), cancelToken).ConfigureAwait(false);
 
     /// <summary>
-    ///     Get all entites from Home Assistant
+    ///     Get all entities from Home Assistant
     /// </summary>
     /// <param name="connection">connected Home Assistant instance</param>
     /// <param name="cancelToken">cancellation token</param>
@@ -66,25 +66,29 @@ public static class IHomeAssistantConnectionExtensions
     ///     Get all configuration from Home Assistant
     /// </summary>
     /// <param name="connection">connected Home Assistant instance</param>
+    /// <param name="domain"></param>
+    /// <param name="service"></param>
+    /// <param name="serviceData"></param>
+    /// <param name="target">The target of service call</param>
     /// <param name="cancelToken">cancellation token</param>
     public static async Task CallServiceAsync(
         this IHomeAssistantConnection connection,
         string domain,
         string service,
         object? serviceData = null,
-        HassTarget? Target = null,
+        HassTarget? target = null,
         CancellationToken? cancelToken = null
     )
     {
         await connection
-            .SendCommandAndReturnResponseAsync<CallServiceCommand, Object?>
+            .SendCommandAndReturnResponseAsync<CallServiceCommand, object?>
                         (
                 new CallServiceCommand
                 {
                     Domain = domain,
                     Service = service,
                     ServiceData = serviceData,
-                    Target = Target
+                    Target = target
                 },
                 cancelToken ?? CancellationToken.None).ConfigureAwait(false);
     }
@@ -105,7 +109,7 @@ public static class IHomeAssistantConnectionExtensions
                 .Where(n => n.Type == "pong")
                 .Timeout(timeout, Observable.Return(default(HassMessage?)))
                 .FirstAsync()
-                .ToTask();
+                .ToTask(cancelToken);
 
             await connection
                 .SendCommandAsync<SimpleCommand>

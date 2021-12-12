@@ -1,11 +1,9 @@
-using NetDaemon.Client.Internal.Extensions;
-
 namespace NetDaemon.HassClient.Tests.ExtensionsTest;
 
 public class JsonElementExtensionTest
 {
     [Fact]
-    public void TestToJsonElementShouldReturnCorrectElemt()
+    public void TestToJsonElementShouldReturnCorrectElement()
     {
         var cmd = new SimpleCommand("get_services");
 

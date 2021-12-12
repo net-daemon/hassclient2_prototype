@@ -11,7 +11,7 @@ internal class HomeAssistantConnectionFactory : IHomeAssistantConnectionFactory
     )
     {
         _logger = logger;
-        this._apiManager = apiManager;
+        _apiManager = apiManager;
     }
 
     public IHomeAssistantConnection New(IWebSocketClientTransportPipeline transportPipeline)

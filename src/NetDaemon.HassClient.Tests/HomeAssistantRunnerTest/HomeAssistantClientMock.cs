@@ -1,11 +1,10 @@
 using NetDaemon.HassClient.Tests.HomeAssistantClientTest;
-using NetDaemon.HassClient.Tests.Net;
 
 namespace NNetDaemon.HassClient.Tests.HomeAssistantRunnerTest;
 
 internal class HomeAssistantClientMock : Mock<IHomeAssistantClient>
 {
-    private readonly HomeAssistantConnectionMock HaConnectionMock = new();
+    private readonly HomeAssistantConnectionMock _haConnectionMock = new();
 
     public HomeAssistantClientMock()
     {
@@ -19,13 +18,13 @@ internal class HomeAssistantClientMock : Mock<IHomeAssistantClient>
                 It.IsAny<CancellationToken>()
             )
         ).Returns(
-            (string host, int port, bool ssl, string token, CancellationToken cancellationToken) =>
+            (string _, int _, bool _, string _, CancellationToken _) =>
             {
-                return Task.FromResult(HaConnectionMock.Object);
+                return Task.FromResult(_haConnectionMock.Object);
             }
         );
 
-        HaConnectionMock.Setup(n =>
+        _haConnectionMock.Setup(n =>
             n.ProcessHomeAssistantEventsAsync(It.IsAny<CancellationToken>())
         ).Returns(
             async (CancellationToken cancelToken) =>

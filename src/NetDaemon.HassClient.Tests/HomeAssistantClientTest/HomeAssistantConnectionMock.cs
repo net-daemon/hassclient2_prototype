@@ -9,6 +9,6 @@ internal class HomeAssistantConnectionMock : Mock<IHomeAssistantConnection>
     {
         Setup(n => n.SendCommandAndReturnResponseAsync<SimpleCommand, HassConfig>(
             It.IsAny<SimpleCommand>(), It.IsAny<CancellationToken>())).Returns(
-            async (SimpleCommand command, CancellationToken token) => await _responseConfigMessageChannel.Reader.ReadAsync(CancellationToken.None));
+            async (SimpleCommand _, CancellationToken _) => await _responseConfigMessageChannel.Reader.ReadAsync(CancellationToken.None));
     }
 }

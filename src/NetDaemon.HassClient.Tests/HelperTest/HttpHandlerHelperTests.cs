@@ -1,4 +1,3 @@
-using NetDaemon.Client.Internal.Helpers;
 namespace NetDaemon.HassClient.Tests.HelperTest;
 
 public class HttpHandlerHelperTests

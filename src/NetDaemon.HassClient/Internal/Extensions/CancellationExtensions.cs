@@ -16,7 +16,7 @@ internal static class CancellationTokenExtensions
     /// <typeparam name="T"></typeparam>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that can be canceled, but never completed.</returns>
-    public static Task<T> AsTask<T>(this CancellationToken cancellationToken)
+    private static Task<T> AsTask<T>(this CancellationToken cancellationToken)
     {
         var tcs = new TaskCompletionSource<T>();
         cancellationToken.Register(() => tcs.TrySetCanceled(), false);

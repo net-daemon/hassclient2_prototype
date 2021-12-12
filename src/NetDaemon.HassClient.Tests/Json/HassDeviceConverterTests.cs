@@ -14,7 +14,7 @@ public class JsonConverterTests
     [Fact]
     public void TestConvertionWithNumericValue()
     {
-        var jsonDevice = @"
+        const string jsonDevice = @"
         {
             ""config_entries"": [],
             ""connections"": [],
@@ -35,7 +35,7 @@ public class JsonConverterTests
     [Fact]
     public void TestConvertionWithStringValue()
     {
-        var jsonDevice = @"
+        const string jsonDevice = @"
         {
             ""config_entries"": [],
             ""connections"": [],
