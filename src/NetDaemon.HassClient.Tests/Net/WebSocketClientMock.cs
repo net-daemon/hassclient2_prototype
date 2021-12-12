@@ -10,7 +10,7 @@ internal class WebSocketClientMock : Mock<IWebSocketClient>
     private readonly Channel<byte[]> _responseMessageChannel = Channel.CreateBounded<byte[]>(100);
 
     private byte[]? _currentMultiSpanMessage;
-    private int _currentReadPosition = 0;
+    private int _currentReadPosition;
 
     public WebSocketClientMock()
     {
@@ -47,11 +47,10 @@ internal class WebSocketClientMock : Mock<IWebSocketClient>
                 .Returns(
                     async (Memory<byte> buffer, CancellationToken token) =>
                     {
-                        // The message is read from channel unless we are in a mulispan message
-                        var msg = (_currentMultiSpanMessage is not null) ? _currentMultiSpanMessage :
-                            await _responseMessageChannel.Reader.ReadAsync(token).ConfigureAwait(false);
+                        // The message is read from channel unless we are in a multi-span message
+                        var msg = _currentMultiSpanMessage ?? await _responseMessageChannel.Reader.ReadAsync(token).ConfigureAwait(false);
 
-                        if ((msg.Length - _currentReadPosition) > buffer.Length)
+                        if (msg.Length - _currentReadPosition > buffer.Length)
                         {
                             // Handle websocket messages that have 
                             // size bigger than buffer, so chunk it up
@@ -63,7 +62,7 @@ internal class WebSocketClientMock : Mock<IWebSocketClient>
                         }
 
                         int len = msg.Length - _currentReadPosition;
-                        msg.AsMemory(_currentReadPosition, len).CopyTo(buffer);
+                        MemoryExtensions.AsMemory(msg, _currentReadPosition, len).CopyTo(buffer);
 
                         _currentReadPosition = 0;
                         _currentMultiSpanMessage = null;

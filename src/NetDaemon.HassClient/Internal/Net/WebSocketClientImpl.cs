@@ -60,11 +60,7 @@ internal class WebSocketClientImpl : IWebSocketClient
                     return true;   //Is valid
                 }
 
-                if (cert?.GetCertHashString() == bypassCertificateErrorWithHash?.ToUpperInvariant())
-                {
-                    return true;
-                }
-                return false;
+                return cert?.GetCertHashString() == bypassCertificateErrorWithHash?.ToUpperInvariant();
             };
         }
     }

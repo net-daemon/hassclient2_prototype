@@ -9,13 +9,13 @@ internal class HomeAssistantClient : IHomeAssistantClient
 
     public HomeAssistantClient(
         ILogger<HomeAssistantClient> logger,
-        IWebSocketClientFactory WebSocketClientFactory,
+        IWebSocketClientFactory webSocketClientFactory,
         IWebSocketClientTransportPipelineFactory transportPipelineFactory,
         IHomeAssistantConnectionFactory connectionFactory
     )
     {
         _logger = logger;
-        _webSocketClientFactory = WebSocketClientFactory;
+        _webSocketClientFactory = webSocketClientFactory;
         _transportPipelineFactory = transportPipelineFactory;
         _connectionFactory = connectionFactory;
     }
@@ -37,16 +37,13 @@ internal class HomeAssistantClient : IHomeAssistantClient
 
             var transportPipeline = _transportPipelineFactory.New(ws);
 
-            await HandleAutorizationSequence(token, transportPipeline, cancelToken).ConfigureAwait(false);
+            await HandleAuthorizationSequence(token, transportPipeline, cancelToken).ConfigureAwait(false);
 
             var connection = _connectionFactory.New(transportPipeline);
 
-            if (!await CheckIfRunning(connection, cancelToken).ConfigureAwait(false))
-            {
-                await connection.DisposeAsync().ConfigureAwait(false);
-                throw new HomeAssistantConnectionException(DisconnectReason.NotReady);
-            }
-            return connection;
+            if (await CheckIfRunning(connection, cancelToken).ConfigureAwait(false)) return connection;
+            await connection.DisposeAsync().ConfigureAwait(false);
+            throw new HomeAssistantConnectionException(DisconnectReason.NotReady);
         }
         catch (OperationCanceledException)
         {
@@ -73,11 +70,11 @@ internal class HomeAssistantClient : IHomeAssistantClient
         return config.State == "RUNNING";
     }
 
-    private static async Task HandleAutorizationSequence(string token, IWebSocketClientTransportPipeline transportPipeline, CancellationToken cancelToken)
+    private static async Task HandleAuthorizationSequence(string token, IWebSocketClientTransportPipeline transportPipeline, CancellationToken cancelToken)
     {
         var connectTimeoutTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancelToken);
         connectTimeoutTokenSource.CancelAfter(5000);
-        // Begin the autorization sequence
+        // Begin the authorization sequence
         // Expect 'auth_required' 
         var msg = await transportPipeline.GetNextMessageAsync<HassMessage>(connectTimeoutTokenSource.Token).ConfigureAwait(false);
         if (msg.Type != "auth_required")

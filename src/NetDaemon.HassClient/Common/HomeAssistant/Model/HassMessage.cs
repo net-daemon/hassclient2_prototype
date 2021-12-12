@@ -2,7 +2,6 @@
 public record HassMessage : HassMessageBase
 {
     [JsonPropertyName("event")]
-    // [JsonConverter(typeof(HassEventConverter))]
     public HassEvent? Event { get; init; }
 
     [JsonPropertyName("id")]
@@ -10,8 +9,6 @@ public record HassMessage : HassMessageBase
 
     [JsonPropertyName("message")]
     public string? Message { get; init; }
-
-    // public object? Result { get; set; }
 
     [JsonPropertyName("result")]
     public JsonElement? ResultElement { get; init; }

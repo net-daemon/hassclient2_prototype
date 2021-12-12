@@ -12,7 +12,7 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
     private readonly Subject<HassMessage> _hassMessageSubject = new();
     private readonly Task _handleNewMessagesTask;
 
-    internal int WaitForResultTimeout { get; set; } = 5000;
+    private const int WaitForResultTimeout = 5000;
 
     private int _messageId = 1;
 
@@ -25,7 +25,8 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
     ///     Default constructor
     /// </summary>
     /// <param name="logger">A logger instance</param>
-    /// <param name="pipeline">The pipline to use for websocket communication</param>
+    /// <param name="pipeline">The pipeline to use for websocket communication</param>
+    /// <param name="apiManager">The api manager</param>
     public HomeAssistantConnection(
         ILogger<IHomeAssistantConnection> logger,
         IWebSocketClientTransportPipeline pipeline,
@@ -62,17 +63,14 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
     public Task SendCommandAsync<T>(T command, CancellationToken cancelToken) where T : CommandMessage
     {
         command.Id = Interlocked.Increment(ref _messageId);
-        return _transportPipeline.SendMessageAsync<T>(command, cancelToken);
+        return _transportPipeline.SendMessageAsync(command, cancelToken);
     }
 
     public async Task<TResult?> SendCommandAndReturnResponseAsync<T, TResult>(T command, CancellationToken cancelToken) where T : CommandMessage
     {
         var result = await SendCommandAndReturnResponseRawAsync(command, cancelToken).ConfigureAwait(false);
 
-        if (result is not null)
-            return result.Value.ToObject<TResult>();
-
-        return default;
+        return result is not null ? result.Value.ToObject<TResult>() : default;
     }
 
     public async Task<JsonElement?> SendCommandAndReturnResponseRawAsync<T>(T command, CancellationToken cancelToken) where T : CommandMessage
@@ -85,7 +83,7 @@ internal class HomeAssistantConnection : IHomeAssistantConnection, IHomeAssistan
             .FirstAsync()
             .ToTask();
 
-        await _transportPipeline.SendMessageAsync<T>(command, cancelToken).ConfigureAwait(false);
+        await _transportPipeline.SendMessageAsync(command, cancelToken).ConfigureAwait(false);
         var result = await resultEvent.ConfigureAwait(false) ??
             throw new ApplicationException("Send command ({command.Type}) did not get response in timely fashion");
 

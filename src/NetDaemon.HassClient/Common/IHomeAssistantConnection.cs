@@ -3,7 +3,7 @@ namespace NetDaemon.Client.Common;
 public interface IHomeAssistantConnection : IHomeAssistantApiManager, IAsyncDisposable
 {
     /// <summary>
-    ///     Allows subsription on all events
+    ///     Allows subscription on all events
     /// </summary>
     /// <remark>
     ///     This requires that "ProcessHomeAssistantEvents" task is running
@@ -48,7 +48,7 @@ public interface IHomeAssistantConnection : IHomeAssistantApiManager, IAsyncDisp
 public interface IHomeAssistantHassMessages
 {
     /// <summary>
-    ///     Allows subsription on all Home Assistant Messages
+    ///     Allows subscription on all Home Assistant Messages
     /// </summary>
     /// <remark>
     ///     This requires that "ProcessHomeAssistantEvents" task is running

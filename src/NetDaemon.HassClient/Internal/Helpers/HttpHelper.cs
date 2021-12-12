@@ -7,12 +7,7 @@ internal static class HttpHelper
     public static HttpMessageHandler CreateHttpMessageHandler()
     {
         var bypassCertificateErrorsForHash = Environment.GetEnvironmentVariable("HASSCLIENT_BYPASS_CERT_ERR");
-        if (string.IsNullOrEmpty(bypassCertificateErrorsForHash))
-        {
-            return new HttpClientHandler();
-        }
-
-        return CreateHttpMessageHandler(bypassCertificateErrorsForHash);
+        return string.IsNullOrEmpty(bypassCertificateErrorsForHash) ? new HttpClientHandler() : CreateHttpMessageHandler(bypassCertificateErrorsForHash);
     }
 
     private static HttpMessageHandler CreateHttpMessageHandler(string certificate)

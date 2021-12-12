@@ -1,7 +1,5 @@
 global using System.Buffers;
 global using System.Collections.Generic;
-global using System.ComponentModel;
-global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics.CodeAnalysis;
 global using System.IO.Pipelines;
 global using System.Globalization;
@@ -16,8 +14,6 @@ global using System.Threading.Tasks;
 global using System.Reactive.Subjects;
 global using System.Reactive.Linq;
 global using System.Reactive.Threading.Tasks;
-global using System.Reflection;
-global using System.Web;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;

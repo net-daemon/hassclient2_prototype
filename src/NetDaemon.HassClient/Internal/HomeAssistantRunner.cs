@@ -14,7 +14,7 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
     )
     {
         _client = client;
-        Logger = logger;
+        _logger = logger;
     }
     private readonly Subject<IHomeAssistantConnection> _onConnectSubject = new();
     public IObservable<IHomeAssistantConnection> OnConnect => _onConnectSubject;
@@ -22,7 +22,7 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
     private readonly Subject<DisconnectReason> _onDisconnectSubject = new();
     public IObservable<DisconnectReason> OnDisconnect => _onDisconnectSubject;
 
-    public ILogger<IHomeAssistantRunner> Logger { get; }
+    private ILogger<IHomeAssistantRunner> _logger { get; }
 
     public Task RunAsync(string host, int port, bool ssl, string token, TimeSpan timeout, CancellationToken cancelToken)
     {
@@ -40,7 +40,7 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
         {
             if (isRetry)
             {
-                Logger.LogDebug("Client disconnected, retrying in {seconds} seconds...", timeout.TotalSeconds);
+                _logger.LogDebug("Client disconnected, retrying in {seconds} seconds...", timeout.TotalSeconds);
                 // This is a retry
                 await Task.Delay(timeout, combinedToken.Token).ConfigureAwait(false);
             }
@@ -57,18 +57,18 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
                 switch (de.Reason)
                 {
                     case DisconnectReason.Unauthorized:
-                        Logger.LogDebug("User token unauthorized! Will not retry connecting...");
+                        _logger.LogDebug("User token unauthorized! Will not retry connecting...");
                         _onDisconnectSubject.OnNext(DisconnectReason.Unauthorized);
                         return;
                     case DisconnectReason.NotReady:
-                        Logger.LogDebug("Home Assistant is not ready yet!");
+                        _logger.LogDebug("Home Assistant is not ready yet!");
                         _onDisconnectSubject.OnNext(DisconnectReason.NotReady);
                         break;
                 }
             }
             catch (OperationCanceledException)
             {
-                Logger.LogDebug("Run cancelled");
+                _logger.LogDebug("Run cancelled");
                 if (_internalTokenSource.IsCancellationRequested)
                 {
                     // We have internal cancellation due to dispose
@@ -82,7 +82,7 @@ internal class HomeAssistantRunner : IHomeAssistantRunner
             }
             catch (Exception e)
             {
-                Logger.LogError("Error running HassClient", e);
+                _logger.LogError("Error running HassClient", e);
                 _onDisconnectSubject.OnNext(DisconnectReason.Error);
             }
             finally

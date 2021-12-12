@@ -3,7 +3,7 @@ namespace NetDaemon.Client.Common.HomeAssistant.Model
     /// <summary>
     ///     Represents a target for a service call in Home Assistant
     /// </summary>
-    public record HassTarget()
+    public record HassTarget
     {
         /// <summary>
         ///     Zero or more entity id to target with the service call

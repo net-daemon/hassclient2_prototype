@@ -7,6 +7,7 @@ public interface IHomeAssistantApiManager
     ///     Get to Home Assistant API
     /// </summary>
     /// <param name="apiPath">relative path</param>
+    /// <param name="cancelToken">cancellation token</param>
     /// <typeparam name="T">Return type (json serializable)</typeparam>
     Task<T?> GetApiCall<T>(string apiPath, CancellationToken cancelToken);
 
@@ -14,6 +15,7 @@ public interface IHomeAssistantApiManager
     ///     Post to Home Assistant API
     /// </summary>
     /// <param name="apiPath">relative path</param>
+    /// <param name="cancelToken">cancellation token</param>
     /// <param name="data">data being sent</param>
     /// <typeparam name="T">Return type (json serializable)</typeparam>
     public Task<T?> PostApiCall<T>(string apiPath, CancellationToken cancelToken, object? data = null);

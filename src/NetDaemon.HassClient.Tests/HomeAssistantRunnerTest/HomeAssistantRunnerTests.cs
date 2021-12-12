@@ -1,4 +1,3 @@
-using NetDaemon.Client.Internal;
 using NNetDaemon.HassClient.Tests.HomeAssistantRunnerTest;
 
 namespace NetDaemon.HassClient.Tests.HomeAssistantRunnerTest;
@@ -6,19 +5,19 @@ namespace NetDaemon.HassClient.Tests.HomeAssistantRunnerTest;
 
 public class HomeAssistantRunnerTests
 {
-    private readonly HomeAssistantClientMock ClientMock = new();
+    private readonly HomeAssistantClientMock _clientMock = new();
 
-    private readonly Mock<ILogger<IHomeAssistantRunner>> LogMock = new();
+    private readonly Mock<ILogger<IHomeAssistantRunner>> _logMock = new();
 
     private HomeAssistantRunner DefaultRunner { get; }
 
     public HomeAssistantRunnerTests()
     {
 
-        DefaultRunner = new(ClientMock.Object, LogMock.Object);
+        DefaultRunner = new(_clientMock.Object, _logMock.Object);
     }
     [Fact]
-    public async Task TestSuccessfullShouldPostConnection()
+    public async Task TestSuccessfulShouldPostConnection()
     {
         using var cancelSource = new CancellationTokenSource();
 
@@ -41,10 +40,10 @@ public class HomeAssistantRunnerTests
     }
 
     [Fact]
-    public async Task TestUnSuccessfullConnectionShouldPostCorrectDisconnectError()
+    public async Task TestUnSuccessfulConnectionShouldPostCorrectDisconnectError()
     {
         using var cancelSource = new CancellationTokenSource();
-        ClientMock.Setup(n =>
+        _clientMock.Setup(n =>
             n.ConnectAsync(
                 It.IsAny<string>(),
                 It.IsAny<int>(),
@@ -76,7 +75,7 @@ public class HomeAssistantRunnerTests
     public async Task TestNotReadyConnectionShouldPostCorrectDisconnectError()
     {
         using var cancelSource = new CancellationTokenSource();
-        ClientMock.Setup(n =>
+        _clientMock.Setup(n =>
             n.ConnectAsync(
                 It.IsAny<string>(),
                 It.IsAny<int>(),
@@ -105,10 +104,10 @@ public class HomeAssistantRunnerTests
     }
 
     [Fact]
-    public async Task TestNotAutorizedConnectionShouldPostCorrectDisconnectError()
+    public async Task TestNotAuthorizedConnectionShouldPostCorrectDisconnectError()
     {
         using var cancelSource = new CancellationTokenSource();
-        ClientMock.Setup(n =>
+        _clientMock.Setup(n =>
             n.ConnectAsync(
                 It.IsAny<string>(),
                 It.IsAny<int>(),
@@ -164,7 +163,7 @@ public class HomeAssistantRunnerTests
     public async Task TestRemoteDisconnectShouldPostCorrectDisconnectError()
     {
         using var cancelSource = new CancellationTokenSource();
-        ClientMock.Setup(n =>
+        _clientMock.Setup(n =>
             n.ConnectAsync(
                 It.IsAny<string>(),
                 It.IsAny<int>(),

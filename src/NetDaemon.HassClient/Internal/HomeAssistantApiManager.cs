@@ -26,12 +26,9 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
 
     private void InitializeHttpClientWithAuthorizationHeaders(string token)
     {
-        if (_httpClient != null)
-        {
-            _httpClient.DefaultRequestHeaders.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-        }
+        _httpClient.DefaultRequestHeaders.Clear();
+        _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
     }
 
     private static string GetApiUrl(HomeAssistantSettings settings)
@@ -81,14 +78,9 @@ internal class HomeAssistantApiManager : IHomeAssistantApiManager
             sc,
             cancelToken).ConfigureAwait(false);
 
-        if (result.IsSuccessStatusCode)
-        {
-            if (result.Content.Headers.ContentLength > 0)
-            {
-                var stream = await result.Content.ReadAsStreamAsync(cancelToken).ConfigureAwait(false);
-                return await JsonSerializer.DeserializeAsync<T>(stream, (JsonSerializerOptions?)null, cancelToken).ConfigureAwait(false);
-            }
-        }
-        return default;
+        if (!result.IsSuccessStatusCode) return default;
+        if (!(result.Content.Headers.ContentLength > 0)) return default;
+        var stream = await result.Content.ReadAsStreamAsync(cancelToken).ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<T>(stream, (JsonSerializerOptions?)null, cancelToken).ConfigureAwait(false);
     }
 }

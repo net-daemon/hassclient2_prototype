@@ -4,7 +4,7 @@ public class ServiceCollectionExtensionTests
 {
 
     [Fact]
-    public void TestServiceCollectionExtention()
+    public void TestServiceCollectionExtension()
     {
         var services = new ServiceCollection();
         services.AddHomeAssistantClient();

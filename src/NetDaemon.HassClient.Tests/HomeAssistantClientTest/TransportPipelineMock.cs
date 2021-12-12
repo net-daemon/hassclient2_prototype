@@ -8,10 +8,6 @@ internal class TransportPipelineMock : Mock<IWebSocketClientTransportPipeline>
     public TransportPipelineMock()
     {
         Setup(n => n.GetNextMessageAsync<HassMessage>(It.IsAny<CancellationToken>())).Returns(
-            async (CancellationToken token) =>
-            {
-                return await _responseMessageChannel.Reader.ReadAsync(CancellationToken.None).ConfigureAwait(false);
-            }
-        );
+            async (CancellationToken _) => await _responseMessageChannel.Reader.ReadAsync(CancellationToken.None).ConfigureAwait(false));
     }
 }

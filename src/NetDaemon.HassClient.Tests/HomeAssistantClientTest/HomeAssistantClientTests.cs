@@ -4,9 +4,9 @@ namespace NetDaemon.HassClient.Tests.HomeAssistantClientTest;
 
 public class HomeAssistantClientTests
 {
-    private readonly TransportPipelineMock Pipeline = new();
-    private readonly WebSocketClientMock WsMock = new();
-    private readonly HomeAssistantConnectionMock HaConnectionMock = new();
+    private readonly TransportPipelineMock _pipeline = new();
+    private readonly WebSocketClientMock _wsMock = new();
+    private readonly HomeAssistantConnectionMock _haConnectionMock = new();
 
     /// <summary>
     ///     Return a mocked Home Assistant Client
@@ -16,16 +16,16 @@ public class HomeAssistantClientTests
         var connFactoryMock = new Mock<IHomeAssistantConnectionFactory>();
         var loggerMock = new Mock<ILogger<HomeAssistantClient>>();
         var wsClientFactoryMock = new Mock<IWebSocketClientFactory>();
-        var transportPipelingFactoryMock = new Mock<IWebSocketClientTransportPipelineFactory>();
+        var transportPipelineFactoryMock = new Mock<IWebSocketClientTransportPipelineFactory>();
 
-        wsClientFactoryMock.Setup(n => n.New()).Returns(WsMock.Object);
-        transportPipelingFactoryMock.Setup(n => n.New(It.IsAny<IWebSocketClient>())).Returns(Pipeline.Object);
+        wsClientFactoryMock.Setup(n => n.New()).Returns(_wsMock.Object);
+        transportPipelineFactoryMock.Setup(n => n.New(It.IsAny<IWebSocketClient>())).Returns(_pipeline.Object);
         connFactoryMock.Setup(n =>
-            n.New(It.IsAny<IWebSocketClientTransportPipeline>())).Returns(HaConnectionMock.Object);
+            n.New(It.IsAny<IWebSocketClientTransportPipeline>())).Returns(_haConnectionMock.Object);
         return new HomeAssistantClient(
                     loggerMock.Object,
                     wsClientFactoryMock.Object,
-                    transportPipelingFactoryMock.Object,
+                    transportPipelineFactoryMock.Object,
                     connFactoryMock.Object);
     }
 
@@ -36,15 +36,15 @@ public class HomeAssistantClientTests
 
         var connection = await client.ConnectAsync("host", 1, true, "token", CancellationToken.None).ConfigureAwait(false);
 
-        connection!.Should().NotBeNull();
+        connection.Should().NotBeNull();
     }
 
     [Fact]
     public async Task TestConnectWithHomeAssistantNotReadyShouldThrowException()
     {
-        var client = GetDefaultAutorizedHomeAssistantClient();
+        var client = GetDefaultAuthorizedHomeAssistantClient();
 
-        HaConnectionMock.AddConfigResponseMessage(
+        _haConnectionMock.AddConfigResponseMessage(
             new()
             {
                 State = "ANY_STATE_BUT_RUNNING"
@@ -57,30 +57,30 @@ public class HomeAssistantClientTests
     [Fact]
     public void TestInstanceNewConnectionOnClosedWebsocketThrowsExceptionShouldThrowException()
     {
-        Pipeline.SetupGet(
+        _pipeline.SetupGet(
             n => n.WebSocketState
         ).Returns(WebSocketState.Closed);
         var loggerMock = new Mock<ILogger<IHomeAssistantConnection>>();
         Assert.Throws<ApplicationException>(() =>
           _ = new HomeAssistantConnection(
           loggerMock.Object,
-          Pipeline.Object,
+          _pipeline.Object,
           new Mock<IHomeAssistantApiManager>().Object));
     }
 
     /// <summary>
     ///     Return a pre-authenticated OK HomeAssistantClient
     /// </summary>
-    internal HomeAssistantClient GetDefaultAutorizedHomeAssistantClient()
+    internal HomeAssistantClient GetDefaultAuthorizedHomeAssistantClient()
     {
-        // First add the autorization responses from pipeline
-        Pipeline.AddResponse(
+        // First add the authorization responses from pipeline
+        _pipeline.AddResponse(
             new HassMessage
             {
                 Type = "auth_required"
             }
         );
-        Pipeline.AddResponse(
+        _pipeline.AddResponse(
             new HassMessage
             {
                 Type = "auth_ok"
@@ -95,24 +95,24 @@ public class HomeAssistantClientTests
     /// </summary>
     internal HomeAssistantClient GetDefaultConnectOkHomeAssistantClient()
     {
-        // For a successfull connection we need success on autorization
+        // For a successful connection we need success on autorization
         // and success on getting a config message that has state="RUNNING"
 
-        // First add the autorization responses from pipeline
-        Pipeline.AddResponse(
+        // First add the authorization responses from pipeline
+        _pipeline.AddResponse(
             new HassMessage
             {
                 Type = "auth_required"
             }
         );
-        Pipeline.AddResponse(
+        _pipeline.AddResponse(
             new HassMessage
             {
                 Type = "auth_ok"
             }
         );
         // The add the fake config state that says running
-        HaConnectionMock.AddConfigResponseMessage(
+        _haConnectionMock.AddConfigResponseMessage(
             new()
             {
                 State = "RUNNING"
